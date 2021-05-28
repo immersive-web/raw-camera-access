@@ -1,0 +1,190 @@
+<pre class="metadata">
+Shortname: webxr-raw-camera-access
+Title: WebXR Raw Camera Access Module
+Group: immersivewebcg
+Status: CG-DRAFT
+Level: 1
+ED: https://immersive-web.github.io/raw-camera-access/
+Repository: immersive-web/raw-camera-access
+Mailing List Archives: https://lists.w3.org/Archives/Public/public-immersive-web/
+
+!Participate: <a href="https://github.com/immersive-web/raw-camera-access/issues/new">File an issue</a> (<a href="https://github.com/immersive-web/raw-camera-access/issues">open issues</a>)
+!Participate: <a href="https://lists.w3.org/Archives/Public/public-immersive-web/">Mailing list archive</a>
+!Participate: <a href="irc://irc.w3.org:6665/">W3C's #immersive-web IRC</a>
+
+Editor: Piotr Bialecki 114482, Google http://google.com/, bialpio@google.com
+
+Abstract:
+</pre>
+
+<pre class="link-defaults">
+spec:webxr device api - level 1; type:dfn; for:/; text:xr device
+</pre>
+
+<pre class="anchors">
+spec: WebGL; urlPrefix: https://www.khronos.org/registry/webgl/specs/latest/1.0/#
+    type: interface; text: WebGLTexture; url: 5.9
+spec: WebXR Layers; urlPrefix: https://immersive-web.github.io/layers/#
+    type: dfn; text: opaque texture; url: opaque-texture
+spec: WebXR Device API - Level 1; urlPrefix: https://www.w3.org/TR/webxr/#
+    type: dfn; text: capable of supporting; url: capable-of-supporting
+    type: dfn; text: feature descriptor; url: feature-descriptor
+    type: dfn; text: feature policy; url: feature-policy
+    type: dfn; text: inline XR device; url: inline-xr-device
+    type: interface; text: XRFrame; url: xrframe-interface
+    for: XRFrame;
+        type: dfn; text: active; url: xrframe-active
+        type: dfn; text: animationFrame; url: xrframe-animationframe
+        type: dfn; text: time; url: xrframe-time
+    type: interface; text: XRSession; url: xrsession-interface
+    for: XRSession;
+        type: dfn; text: mode; url: xrsession-mode
+        type: dfn; text: XR device; url: xrsession-xr-device
+    for: XRView;
+        type: dfn; text: frame; url: xrview-frame
+    type: dfn; text: XR device; url: xr-device
+    for: XR device;
+        type: dfn; text: list of enabled features; url: xr-device-list-of-enabled-features
+</pre>
+
+<style>
+  .non-normative::before {
+    content: "This section is non-normative.";
+    font-style: italic;
+  }
+  .tg {
+    border-collapse: collapse;
+    border-spacing: 0;
+  }
+  .tg th {
+    border-style: solid;
+    border-width: 1px;
+    background: #90b8de;
+    color: #fff;
+    font-family: sans-serif;
+    font-weight: bold;
+    border-color: grey;
+  }
+  .tg td {
+    padding: 4px 5px;
+    background-color: rgb(221, 238, 255);
+    font-family: monospace;
+    border-style: solid;
+    border-width: 1px;
+    border-color: grey;
+    overflow: hidden;
+    word-break: normal;
+  }
+  .unstable::before {
+    content: "This section is not stable";
+    display: block;
+    font-weight: bold;
+    text-align: right;
+    color: red;
+  }
+  .unstable {
+    border: thin solid pink;
+    border-radius: .5em;
+    padding: .5em;
+    margin: .5em calc(-0.5em - 1px);
+    background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='300' height='290'><text transform='rotate(-45)' text-anchor='middle' font-family='sans-serif' font-weight='bold' font-size='70' y='210' opacity='.1'>Unstable</text></svg>");
+    background-repeat: repeat;
+    background-color: #FFF4F4;
+  }
+  .unstable h3:first-of-type {
+    margin-top: 0.5rem;
+  }
+  .unstable.example:not(.no-marker)::before {
+    content: "Example " counter(example) " (Unstable)";
+    float: none;
+  }
+</style>
+
+Introduction {#intro}
+============
+
+<section class="non-normative">
+
+</section>
+
+Terminology {#terminology}
+-----------
+
+This document uses the acronyms AR to signify Augmented Reality, and VR to signify Virtual Reality.
+
+Initialization {#initialization}
+==============
+
+Feature descriptor {#feature-descriptor}
+------------------
+
+The applications can request that raw camera access be enabled on an XRSession by passing an appropriate [=feature descriptor=]. This module introduces new string - <dfn>camera-access</dfn>, as a new valid feature descriptor for raw camera access feature.
+
+A device is [=capable of supporting=] the raw camera access feature if the device exposes [=native camera=] capability. The [=inline XR device=] MUST NOT be treated as [=capable of supporting=] the raw camera access feature.
+
+The raw camera access feature is subject to [=feature policy=] and requires <code>"xr-spatial-tracking"</code> policy to be allowed on the requesting document's origin.
+
+<div class="example">
+The following code demonstrates how a session that requires raw camera access API could be requested:
+
+<pre highlight="js">
+const session = await navigator.xr.requestSession("immersive-ar", {
+  requiredFeatures: ["camera-access"],
+});
+</pre>
+
+</div>
+
+Accessing camera texture {#accessing-camera-texture}
+====================
+
+XRView {#xr-view-section}
+------
+
+<script type="idl">
+partial interface XRView {
+  [SameObject] readonly attribute XRCamera? camera;
+};
+</script>
+
+XRCamera {#xr-camera-section}
+--------
+
+<script type="idl">
+[SecureContext, Exposed=Window]
+interface XRCamera {
+  readonly attribute unsigned long width;
+  readonly attribute unsigned long height;
+};
+</script>
+
+XRWebGLBinding {#xr-web-gl-binding-section}
+--------------
+
+<script type="idl">
+partial interface XRWebGLBinding {
+  WebGLTexture? getCameraImage(XRCamera camera);
+};
+</script>
+
+Native device concepts {#native-device-concepts} 
+======================
+
+Native camera {#native-camera}
+-------------
+
+<section class="non-normative">
+
+</section>
+
+Privacy & Security Considerations {#privacy-security}
+=================================
+
+<section class="non-normative">
+
+</section>
+
+Acknowledgements {#ack}
+================
+
+The following individuals have contributed to the design of the WebXR Depth Sensing specification:

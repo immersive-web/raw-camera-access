@@ -12,7 +12,8 @@ The work in this repository describes experiments that likely falls under the sc
 
 Granting the camera access to the application could allow the applications to:
 - Take a snapshot of the AR experience along with application-rendered content. This is mostly relevant for scenarios where the camera image serves as the background for application's content (for example handheld AR).
-- Provide feedback to the user about the environment they are located in. This may be particularly useful for VR headsets with available cameras (for example WMR headsets and the Flashlight feature).
+- Allow the application to overlay some render effects over the entire scene.
+- Provide feedback to the user about the environment they are located in. This may be particularly useful for VR headsets with available cameras (for example WMR headsets and the Flashlight feature). Note: this use case is not addressed by the current proposal - see [Immersive Web CG discussions](#Immersive-Web-CG-discussions) section.
 - Run custom computer vision algorithms on the data obtained from the camera texture. It may for example enable applications to semantically annotate regions of the image, for example to provide features related to accessibility.
 
 
@@ -39,8 +40,6 @@ partial interface XRWebGLBinding {
 ```
 
 This allows us to provide a time-indexed texture containing a camera image that is retrievable only when the XRFrame is considered active. The API should also be gated by the `“camera-access”` feature descriptor.
-
-The API is extensible to account for other (less smartphone-centric) scenarios by exposing a separate XRCamera type. The camera instances serve as handles to obtain the camera texture, and the WebXR API could add more sources of obtaining the XRCamera instances if need be. The XRCamera interface could also be easily extended.
 
 ## Using the API
 
@@ -79,6 +78,8 @@ Side note: GL binding referred to in step 3. is an interface that is newly intro
 
 ### Initial API proposal
 
+First variant of the API was described in bialpio@google.com's personal repository, used to implenent a PoC in Chrome for Android.
+
 ```webidl
 partial interface XRWebGLBinding {
   WebGLTexture? getCameraImage(XRFrame frame, XRView view);
@@ -92,3 +93,7 @@ partial interface XRViewerPose {
 The initial proposal of the API used an `XRView` type as a handle that can then be used to query the camera image from the system. The camera intrinsics could be calculated by inspecting the projection matrix of the XRView. In case the system wanted to surface a camera image that is not aligned with any of the existing views, it would have to artificially create additional `XRView` instances.
 
 This API shape was not very extensible as it did not offer a clear way of adding camera-specific properties - they would have to be added to an `XRView`. In the likely case the API would have to be extended to account for cameras that are not aligned with views, the API shape did not offer nice / obvious extension points.
+
+### Immersive Web CG discussions
+
+Initial IW CG discussions for the feature happened in bialpio@google.com's personal [repository](https://github.com/bialpio/webxr-raw-camera-access/issues/1) (currently archived), and caused the API shape to change. The [outcome](https://github.com/bialpio/webxr-raw-camera-access/issues/1#issuecomment-821531579) of the discussion was to pivot from attempting to provide a unified API shape to cater to both smartphone-focused (render effects) and <abbr title="head-mounted display">HMD</abbr>-focused (running custom computer vision algorithms) scenarios, into a simpler API shape that would work primarily for smartphone-specific scenarios. The API shape could later be extended with a variant that would take into account various platform constraints of HMDs - this variant would also be feasible to implement on smartphones. In addition, application authors could use the currently proposed API shape to run custom CV algorithms on the returned camera texture if they choose to, until a better-suited, cross-platform solution becomes available in WebXR. For more details, see the discussion linked above.
