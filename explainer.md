@@ -76,9 +76,9 @@ Side note: GL binding referred to in step 3. is an interface that is newly intro
 
 ## Obtaining camera extrinsics and intrinsics
 
-Some Computer Vision algorithms may depend on camera intrinsics and extrinsics in order to correctly perform. The camera extrinsics can be obtained by inspecting the `XRView`'s `transform` attribute (this is relative to the reference space used to obtain the viewer pose). The camera intrinsics can be computed given a projection matrix returned from an `XRView`, as well as `XRViewport`. Below, we will go through 2 different paths of calculating the transformation from camera space coordinates to screen space coordinates - one relying on projection matrix and viewport properties, the other relying on camera intrinsics matrix - and use the known parameters from the former approach to calculate the unknown parameters for latter calculation method.
+Some Computer Vision algorithms may depend on camera intrinsics and extrinsics. The camera extrinsics can be obtained by inspecting the `XRView`'s `transform` attribute (this is relative to the reference space used to obtain the viewer pose). The camera intrinsics can be computed given a projection matrix returned from an `XRView`, as well as `XRViewport`. Below, we will go through 2 different paths of calculating the transformation from camera space coordinates to screen space coordinates - one relying on projection matrix and viewport properties, the other relying on camera intrinsics matrix - and use the known parameters from the former approach to calculate the unknown parameters for latter calculation method.
 
-**Note:** The steps to obtain camera intrinsics and extrinsics are only valid since the camera image returned by the API is perfectly aligned with the `XRView` from which it was obtained.
+**Note:** The steps to obtain camera intrinsics and extrinsics are based on the assumption that the camera image returned by the API is perfectly aligned with the `XRView` from which it was obtained. Raw camera access API guarantees that this assumption holds, but the calculations will not be valid for more general scenarios.
 
 ### Camera space to screen space - projection matrix and viewport route
 
@@ -145,7 +145,7 @@ K = ax  gamma  u0  0
     0   0      1   0
 ```
 
-For compatibility with WebXR, insert a placeholder 3rd row to get a 4x4 matrix `Kexp` and invert the Z coordinate. This produces a modified intrinsic matrix K':
+For compatibility with WebXR, create a 4x4 matrix `Kexp` from `K` by inserting a placeholder 3rd row. (The values in this row don't affect the intrinsic parameter calculation and are marked by * .) Then invert the Z coordinate to produce a modified intrinsic matrix `K'`:
 
 ```
 K' = 1  0  0  0 * Kexp = ax  gamma -u0  0

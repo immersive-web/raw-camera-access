@@ -239,6 +239,8 @@ The user agent MAY cache the results of a call to {{XRWebGLBinding/getCameraImag
 
 Note: caching is permitted because the user agent retains ownership of the lifetime of the returned {{WebGLTexture}} (since it's considered an [=opaque texture=]), and because calling this method multiple times within the same [=requestAnimationFrame()=] callback (ensured by using {{XRCamera}}, & therefore {{XRFrame}} transitively as a part of the cache key), on the same binding (ensured by using {{XRWebGLBinding}} as a part of the cache key), will result in textures with identical contents.
 
+If the {{WebGLTexture}} returned from a call to {{XRWebGLBinding/getCameraImage(camera)}} supports transparency, it MUST contain colors with premultiplied alpha.
+
 Issue: Should we specify more information about the returned {{WebGLTexture}}? E.g.: is color-renderable, what is the texture format, etc.
 
 Native device concepts {#native-device-concepts} 
@@ -254,8 +256,6 @@ Raw camera API specification assumes that the native device on top of which the 
 In addition for the device to being able to provide a camera image, the Raw Camera Access API can only provide camera image textures that are [=aligned=] with an {{XRView}} from which they are requested. The camera image is said to be <dfn>aligned</dfn> with the {{XRView}} if the camera pose is the same as the {{XRView}}'s pose, and the camera's viewing frustum has the same shape as {{XRView}}'s viewing frustum. If the camera image returned by the [=native camera=] covers a viewing frustum that entirely contains the {{XRView}}'s viewing frustum, the user agent can crop the camera image as long as the operation causes the viewing frustum shapes to match exactly.
 
 </section>
-
-Issue: Do we want to allow the texture to be "uncropped", i.e. enlarged and filled with transparent texels in areas that would not contain the data coming from the camera?
 
 Privacy & Security Considerations {#privacy-security}
 =================================
