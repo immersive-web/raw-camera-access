@@ -18,7 +18,6 @@ Abstract:
 </pre>
 
 <pre class="link-defaults">
-spec:webxr device api - level 1; type:dfn; for:/; text:xr device
 </pre>
 
 <pre class="anchors">
@@ -26,6 +25,7 @@ spec: WebGL; urlPrefix: https://www.khronos.org/registry/webgl/specs/latest/1.0/
     type: interface; text: WebGLTexture; url: 5.9
 spec: WebXR Layers; urlPrefix: https://immersive-web.github.io/layers/#
     type: dfn; text: opaque texture; url: opaque-texture
+    type: interface; text: XRWebGLBinding; url: XRWebGLBindingtype
     for: XRWebGLBinding;
         type: dfn; text: context; url: xrwebglbinding-context
         type: dfn; text: session; url: xrwebglbinding-session
@@ -44,12 +44,16 @@ spec: WebXR Device API - Level 1; urlPrefix: https://www.w3.org/TR/webxr/#
         type: dfn; text: mode; url: xrsession-mode
         type: dfn; text: XR device; url: xrsession-xr-device
         type: dfn; text: requestAnimationFrame()
+    type: interface; text: XRView; url: xrview-interface
     for: XRView;
         type: dfn; text: frame; url: xrview-frame
         type: dfn; text: session; url: xrview-session
     type: dfn; text: XR device; url: xr-device
     for: XR device;
         type: dfn; text: list of enabled features; url: xr-device-list-of-enabled-features
+    type: dfn; text: XR Compositor; url: xr-compositor
+spec: WebXR Augmented Reality Module; urlPrefix: https://immersive-web.github.io/webxr-ar-module/#
+    type: dfn; text: blend technique; url: blend-technique
 </pre>
 
 <style>
@@ -262,7 +266,11 @@ Privacy & Security Considerations {#privacy-security}
 
 <section class="non-normative">
 
-The Raw Camera Access API has the highest privacy implications out of all currently available WebXR capabilities, in that it is the only API that allows the applications to directly observe the user's environment. Due to this, the user agents SHOULD seek user consent prior to allowing creating sessions with [=camera-access=] feature enabled. In addition, the application developers are strongly encouraged not to ask for [=camera-access=] feature if there are other means of achieving their use cases.
+The Raw Camera Access API has the highest privacy implications out of all currently available WebXR capabilities, in that it is the only API that allows the applications to directly observe the user's environment. Due to this, the user agents SHOULD seek user consent prior to allowing creating sessions with [=camera-access=] feature enabled. Refer to [[webxr-1#security]] & [[webxr-1#user-intention]] sections for more details.
+
+The requirement that the provided camera images are [=aligned=] with the {{XRView}}s offers a partial mitigation for impact of the API on users' privacy. A consequence of this requirement is that depending on the [=XR Compositor=]'s [=blend technique=], the camera image will contain the same information that the user may already be seeing, thus providing direct feedback about which parts of the environment are visible to the website. Note that in some cases it would be possible for the sites to suppress this information (e.g. on smartphones by rendering an opaque object that would encompass the entire view, thus occluding the environment rendered by the compositor).
+
+In addition to the requirement for the user agents to seek user consent, the application developers are strongly encouraged not to ask for [=camera-access=] feature if there are other means of achieving their use cases.
 
 </section>
 
