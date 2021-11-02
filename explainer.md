@@ -39,7 +39,7 @@ partial interface XRWebGLBinding {
 };
 ```
 
-This allows us to provide a time-indexed texture containing a camera image that is retrievable only when the XRFrame is considered active. The API should also be gated by the `“camera-access”` feature descriptor.
+This allows us to provide a time-indexed texture containing a camera image that is retrievable only when the XRFrame is considered active. The API should also be gated by the `"camera-access"` feature descriptor.
 
 ## Using the API
 
@@ -47,8 +47,8 @@ The applications could leverage the newly introduced feature as follows:
 
 1. Create a session that supports accessing camera images:
 ```javascript
-const session = await navigator.xr.requestSession(“immersive-ar”, {
-  requiredFeatures: [“camera-access”]
+const session = await navigator.xr.requestSession("immersive-ar", {
+  requiredFeatures: ["camera-access"]
 });
 ```
 
