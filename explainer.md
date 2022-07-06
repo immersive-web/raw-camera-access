@@ -52,7 +52,7 @@ const session = await navigator.xr.requestSession(“immersive-ar”, {
 });
 ```
 
-If UA decides it needs to prompt the user for permission to use the camera, it can do so at this stage.
+As per WebXR Device API, the user agent will seek either explicit or implicit consent before creating a session. This may mean that a permissions prompt will be displayed to the user at this time.
 
 2. In requestAnimationFrame callback, the application can iterate over the views and react appropriately when it finds a view with a camera associated with it:
 
