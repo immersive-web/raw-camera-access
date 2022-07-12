@@ -293,14 +293,14 @@ Some examples of interacting with the user directly are:
 
 2. Displaying a series of permission prompts that would take into consideration various levels of user consent needed in order to create a session with the requested and optional features provided by the application to {{XRSystem/requestSession()}} call.
 
-</section>
+It is the intent of this specification to ensure that the user agent does not encourage app developers to ask for [=camera-access=] feature if the experience they want to provide does not absolutely require it. Due to privacy implications of the feature, user agents are allowed to introduce additional friction when a site asks for access to the camera images, with the hopes that this would incentivize the applications to not ask for the feature needlessly.
 
-Note: It is the intent of this specification to ensure that the user agent does not encourage app developers to ask for [=camera-access=] feature if the experience they want to provide does not absolutely require it. Due to privacy implications of the feature, user agents are allowed to introduce additional friction when a site asks for access to the camera images, with the hopes that this would incentivize the applications to not ask for the feature needlessly.
+</section>
 
 Privacy indicators {#privacy-indicators}
 ------------------
 
-The user agent SHOULD attempt to display a privacy indicator every time an {{XRSession}} with [=camera-access=] has been created and has not yet [=XRSession/ended=]. If it ever becomes possible to modify a [=XRSession/set of granted features=] of a session after a session has been created, the indicator SHOULD be displayed for at least as long as the [=camera-access=] feature descriptor is [=list/contain|contained=] in the [=XRSession/set of granted features=] of the session.
+The user agent MUST display a privacy indicator every time an {{XRSession}} with [=camera-access=] has been created and has not yet [=XRSession/ended=]. If it ever becomes possible to modify a [=XRSession/set of granted features=] of a session after a session has been created, the indicator SHOULD be displayed for at least as long as the [=camera-access=] feature descriptor is [=list/contain|contained=] in the [=XRSession/set of granted features=] of the session.
 
 <section class="non-normative-remainder">
 
