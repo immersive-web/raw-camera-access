@@ -62,7 +62,7 @@ spec: WebXR Augmented Reality Module; urlPrefix: https://immersive-web.github.io
     font-style: italic;
   }
   .non-normative-remainder::before {
-    content: "The remainder of section is non-normative.";
+    content: "The remainder of this section is non-normative.";
     font-style: italic;
   }
   .tg {
