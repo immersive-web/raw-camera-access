@@ -32,8 +32,8 @@ spec: WebXR Layers; urlPrefix: https://immersive-web.github.io/layers/#
 spec: WebXR Device API - Level 1; urlPrefix: https://www.w3.org/TR/webxr/#
     type: dfn; text: capable of supporting; url: capable-of-supporting
     type: dfn; text: feature descriptor; url: feature-descriptor
-    type: dfn; text: feature policy; url: feature-policy
     type: dfn; text: inline XR device; url: inline-xr-device
+    type: dfn; text: permissions policy; url: permissions-policy
     type: interface; text: XRFrame; url: xrframe-interface
     for: XRFrame;
         type: dfn; text: active; url: xrframe-active
@@ -41,16 +41,16 @@ spec: WebXR Device API - Level 1; urlPrefix: https://www.w3.org/TR/webxr/#
         type: dfn; text: time; url: xrframe-time
     type: interface; text: XRSession; url: xrsession-interface
     for: XRSession;
+        type: dfn; text: ended
         type: dfn; text: mode; url: xrsession-mode
         type: dfn; text: XR device; url: xrsession-xr-device
         type: dfn; text: requestAnimationFrame()
+        type: dfn; text: set of granted features
     type: interface; text: XRView; url: xrview-interface
     for: XRView;
         type: dfn; text: frame; url: xrview-frame
         type: dfn; text: session; url: xrview-session
     type: dfn; text: XR device; url: xr-device
-    for: XR device;
-        type: dfn; text: list of enabled features; url: xr-device-list-of-enabled-features
     type: dfn; text: XR Compositor; url: xr-compositor
 spec: WebXR Augmented Reality Module; urlPrefix: https://immersive-web.github.io/webxr-ar-module/#
     type: dfn; text: blend technique; url: blend-technique
@@ -59,6 +59,10 @@ spec: WebXR Augmented Reality Module; urlPrefix: https://immersive-web.github.io
 <style>
   .non-normative::before {
     content: "This section is non-normative.";
+    font-style: italic;
+  }
+  .non-normative-remainder::before {
+    content: "The remainder of this section is non-normative.";
     font-style: italic;
   }
   .tg {
@@ -135,7 +139,7 @@ The applications can request that raw camera access be enabled on an {{XRSession
 
 A device is [=capable of supporting=] the raw camera access feature if the device exposes [=native camera=] capability. The [=inline XR device=] MUST NOT be treated as [=capable of supporting=] the raw camera access feature.
 
-The raw camera access feature is subject to [=feature policy=] and requires <code>"xr-spatial-tracking"</code> policy to be allowed on the requesting document's origin.
+The raw camera access feature is subject to [=permissions policy=] and requires <code>"xr-spatial-tracking"</code> policy to be allowed on the requesting document's origin. In addition, the <code>"camera"</code> [=permissions policy=] must be allowed on the requesting document's origin.
 
 <div class="example">
 The following code demonstrates how a session that requires raw camera access API could be requested:
@@ -160,15 +164,14 @@ partial interface XRView {
 };
 </script>
 
-The {{XRView}} is extended to contain a {{XRView/camera}} attribute which refers to an {{XRCamera}} instance containing information about the camera image that can be obtained for the view. When {{XRView/camera}} attribute is accessed for the first time on a given {{XRView} instance, the user agent MUST run the [=obtain camera=] algorithm. Subsequent accesses on the same {{XRView}} instance MUST result the same {{XRCamera}} instance if one was returned, or <code>null</code>.
+The {{XRView}} is extended to contain a {{XRView/camera}} attribute which refers to an {{XRCamera}} instance containing information about the camera image relevant for this view. When {{XRView/camera}} attribute is accessed for the first time on a given {{XRView}} instance, the user agent MUST run the [=obtain camera=] algorithm. Subsequent accesses on the same {{XRView}} instance MUST result the same {{XRCamera}} instance if one was returned, or <code>null</code> otherwise.
 
 <div class="algorithm" data-algorithm="obtain-camera">
 
 In order to <dfn>obtain camera</dfn> for {{XRView}} |view|, the user agent MUST run the following steps:
 
   1. Let |session| be the |view|'s [=XRView/session=].
-  1. Let |device| be the |session|'s [=XRSession/XR device=].
-  1. If [=camera-access=] feature descriptor is not [=list/contain|contained=] in the |device|'s [=XR device/list of enabled features=] for |session|'s [=XRSession/mode=], return <code>null</code> and abort these steps.
+  1. If [=camera-access=] feature descriptor is not [=list/contain|contained=] in the |session|'s [=XRSession/set of granted features=], return <code>null</code> and abort these steps.
   1. Let |frame| be the |view|'s [=XRView/frame=].
   1. If |frame|'s [=XRFrame/active=] boolean is <code>false</code>, [=exception/throw=] an {{InvalidStateError}} and abort these steps.
   1. If |frame|'s [=XRFrame/animationFrame=] boolean is <code>false</code>, [=exception/throw=] an {{InvalidStateError}} and abort these steps.
@@ -234,12 +237,12 @@ In order to <dfn>obtain camera image</dfn> from {{XRWebGLBinding}} |binding|, fo
   1. If |frame|'s [=XRFrame/animationFrame=] boolean is <code>false</code>, [=exception/throw=] an {{InvalidStateError}} and abort these steps.
   1. Let |context| be the |binding|'s [=XRWebGLBinding/context=].
   1. Let |camera image| be the |camera|'s [=XRCamera/camera image=].
-  1. Let |result| be a {{WebGLTexture}} that was created on |context|, containing |camera image|'s data.
+  1. Let |result| be a {{WebGLTexture}} that was created on |context|, containing |camera image|'s data. |result| is an [=opaque texture=].
   1. Return |result|.
 
 </div>
 
-The user agent MAY cache the results of a call to {{XRWebGLBinding/getCameraImage(camera)}} to be returned for subsequent calls of the method, assuming that the cache is keyed by the binding and the camera instance. The user agent MUST still validate perform initial validations even when using the cache by running up to step 6 (inclusive) of [=obtain camera image=] algorithm. Because this caching is permitted, the application SHOULD treat the returned {{WebGLTexture}} as read-only.
+The user agent MAY cache the results of a call to {{XRWebGLBinding/getCameraImage(camera)}} to be returned for subsequent calls of the method, assuming that the cache is keyed by the binding and the camera instance. The user agent MUST perform initial validations even when using the cache by running up to step 6 (inclusive) of [=obtain camera image=] algorithm. Because this caching is permitted, the application SHOULD treat the returned {{WebGLTexture}} as read-only.
 
 Note: caching is permitted because the user agent retains ownership of the lifetime of the returned {{WebGLTexture}} (since it's considered an [=opaque texture=]), and because calling this method multiple times within the same [=requestAnimationFrame()=] callback (ensured by using {{XRCamera}}, & therefore {{XRFrame}} transitively as a part of the cache key), on the same binding (ensured by using {{XRWebGLBinding}} as a part of the cache key), will result in textures with identical contents.
 
@@ -266,11 +269,48 @@ Privacy & Security Considerations {#privacy-security}
 
 <section class="non-normative">
 
-The Raw Camera Access API has the highest privacy implications out of all currently available WebXR capabilities, in that it is the only API that allows the applications to directly observe the user's environment. Due to this, the user agents SHOULD seek user consent prior to allowing creating sessions with [=camera-access=] feature enabled. Refer to [[webxr-1#security]] & [[webxr-1#user-intention]] sections for more details.
+The Raw Camera Access API has the highest privacy implications out of all currently available WebXR capabilities, in that it is the only API that allows the applications to directly observe the user's environment. Due to this, the user agents should seek user consent prior to allowing creating sessions with [=camera-access=] feature enabled. Refer to [[webxr-1#security]] & [[webxr-1#user-intention]] sections for more details, as well as [[#user-experience]] & [[#privacy-indicators]] sections below.
 
 The requirement that the provided camera images are [=aligned=] with the {{XRView}}s offers a partial mitigation for impact of the API on users' privacy. A consequence of this requirement is that depending on the [=XR Compositor=]'s [=blend technique=], the camera image will contain the same information that the user may already be seeing, thus providing direct feedback about which parts of the environment are visible to the website. Note that in some cases it would be possible for the sites to suppress this information (e.g. on smartphones by rendering an opaque object that would encompass the entire view, thus occluding the environment rendered by the compositor).
 
 In addition to the requirement for the user agents to seek user consent, the application developers are strongly encouraged not to ask for [=camera-access=] feature if there are other means of achieving their use cases.
+
+</section>
+
+User experience {#user-experience}
+---------------
+
+<section class="non-normative">
+
+As stated above, due to privacy implications of Raw Camera Access API, the user agent should seek user consent prior to creating a session with [=camera-access=] feature enabled. This can be achieved in multiple ways, some of which would require interacting with the user directly.
+
+Some examples of interacting with the user directly are:
+1. Displaying a permission prompt that allows the user to select how fine-grained information will be exposed to the site. Mock of such prompt can be seen below.
+
+<p align="center">
+  <img src="img/permission-mock.png"></img>
+</p>
+
+2. Displaying a series of permission prompts that would take into consideration various levels of user consent needed in order to create a session with the requested and optional features provided by the application to {{XRSystem/requestSession()}} call.
+
+It is the intent of this specification to ensure that the user agent does not encourage app developers to ask for [=camera-access=] feature if the experience they want to provide does not absolutely require it. Due to privacy implications of the feature, user agents are allowed to introduce additional friction when a site asks for access to the camera images, with the hopes that this would incentivize the applications to not ask for the feature needlessly.
+
+</section>
+
+Privacy indicators {#privacy-indicators}
+------------------
+
+The user agent MUST display a privacy indicator every time an {{XRSession}} with [=camera-access=] has been created and has not yet [=XRSession/ended=]. If it ever becomes possible to modify a [=XRSession/set of granted features=] of a session after a session has been created, the indicator SHOULD be displayed for at least as long as the [=camera-access=] feature descriptor is [=list/contain|contained=] in the [=XRSession/set of granted features=] of the session.
+
+<section class="non-normative-remainder">
+
+The indicator displayed to the user should communicate the fact that the device's camera is in-use and the site has access to it, and thus they should take extra care to ensure that the content that falls within the field of view of the camera is something they are comfortable sharing with the site. This is especially true in a public setting, where bystanders that did not consent to being recorded may be present.
+
+The example indicators consist of (but are not limited to):
+- on a mobile device, displaying a notification in the status bar that the camera is in use;
+- rendering a UI element (e.g. a border around the content, a round icon symbolizing "Record" button, etc.) that suggests that the content is being recorded;
+- using a LED indicator of the recording device (if present and controllable by user agent);
+- emitting a camera shutter sound effect at the start of the session;
 
 </section>
 
