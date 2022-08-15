@@ -2,9 +2,11 @@
 
 ## Overview
 
-Currently, to protect user privacy, WebXR Device API does not provide a way to grant raw camera access to the sites. Additionally, alternative ways for sites to obtain raw camera access (`getUserMedia()` web API) are not going to provide the application pose-synchronized camera images that could be integrated with WebXR Device API. For some scenarios, this limitation may pose a significant barrier to adoption of WebXR. This is especially true given the fact that addition of new APIs takes time, thus stifling experimentation and prototyping that could happen purely in JavaScript.
+Currently, to protect user privacy, WebXR Device API does not provide a way to grant raw camera access to the sites. Additionally, alternative ways for sites to obtain raw camera access (`getUserMedia()` web API) are not going to provide the application pose-synchronized camera images that could be integrated with WebXR Device API. For some scenarios, this limitation may pose a significant barrier to adoption of WebXR.
 
-Given the above, it is beneficial to provide the sites access to raw camera images directly through WebXR API. It does come with a potential risk related to the fact that the sites will be granted access to the images from the user's environment. To mitigate privacy aspects of providing such capability, implementers should ensure that appropriate user consent is collected before granting camera access to the site.
+The pace at which novel AR features are developed outstrips our ability to roll out support for these features in the form of special-purpose APIs to the web platform. Further, some features may lack widespread hardware support, thus making standardizing those features impossible. By giving web developers a means to access the raw camera image, they can run their own custom algorithms which will allow for innovation faster than we can provide, or that we will be unable to standardize due to lack of hardware support. One prime example of this is image tracking, where the position of a specified image is tracked from frame to frame. Some platforms only support images and others only support QR codes, while developers would like to track both. Doing so requires running some of their own custom code, and they need access to the camera image to do so.
+
+Providing the sites access to raw camera images directly through WebXR API allows developers to experiment and prototype new AR features directly in JavaScript, thus improving the overall user experience in AR. It does come with a potential risk related to the fact that the sites will be granted access to the images from the user's environment. To mitigate privacy aspects of providing such capability, implementers should ensure that appropriate user consent is collected before granting camera access to the site.
 
 The work in this repository describes experiments that likely falls under the scope of immersive-web CG's [Computer Vision](https://github.com/immersive-web/computer-vision) repository.
 
@@ -16,30 +18,11 @@ Granting the camera access to the application could allow the applications to:
 - Provide feedback to the user about the environment they are located in. This may be particularly useful for VR headsets with available cameras (for example WMR headsets and the Flashlight feature). Note: this use case is not addressed by the current proposal - see [Immersive Web CG discussions](#Immersive-Web-CG-discussions) section.
 - Run custom computer vision algorithms on the data obtained from the camera texture. It may for example enable applications to semantically annotate regions of the image, for example to provide features related to accessibility.
 
+## Non-Goals
+This API is currently targeted at primarily supporting smartphone use-cases. Namely, cases where there is a single camera image being displayed behind the AR content. Specifically, the camera view should exactly match the displayed view and each provided raw image is specifically associated with the camera pose used for drawing the AR content. As such, this API is not intended to support asynchronous image access, or to handle the case of multiple/stereo cameras.
 
-## Proposed API shape
-
-The raw camera image access API should seamlessly integrate with APIs already exposed by the WebXR Device API. The Web IDL for proposed API could look roughly as follows:
-
-```webidl
-partial interface XRView {
-  // Non-null iff there exists an associated camera that perfectly aligns with the view:
-  [SameObject] readonly attribute XRCamera? camera;
-};
-
-interface XRCamera {
-  // Dimensions of the camera image:
-  readonly attribute long width;
-  readonly attribute long height;
-};
-
-partial interface XRWebGLBinding {
-  // Access to the camera texture itself:
-  WebGLTexture? getCameraImage(XRCamera camera);
-};
-```
-
-This allows us to provide a time-indexed texture containing a camera image that is retrievable only when the XRFrame is considered active. The API should also be gated by the `“camera-access”` feature descriptor.
+## Specification:
+The specification may be found [here](https://immersive-web.github.io/raw-camera-access/).
 
 ## Using the API
 

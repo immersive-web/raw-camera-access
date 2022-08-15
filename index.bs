@@ -14,7 +14,7 @@ Mailing List Archives: https://lists.w3.org/Archives/Public/public-immersive-web
 
 Editor: Piotr Bialecki 114482, Google http://google.com/, bialpio@google.com
 
-Abstract:
+Abstract: This specification provides a means to access the raw camera image displayed behind an immerisve-ar session, when the device is responsible for rendering that camera image. A full explainer can be found <a href="https://github.com/immersive-web/raw-camera-access/blob/main/explainer.md">here</a>.
 </pre>
 
 <pre class="link-defaults">
@@ -250,7 +250,7 @@ If the {{WebGLTexture}} returned from a call to {{XRWebGLBinding/getCameraImage(
 
 Issue: Should we specify more information about the returned {{WebGLTexture}}? E.g.: is color-renderable, what is the texture format, etc.
 
-Native device concepts {#native-device-concepts} 
+Native device concepts {#native-device-concepts}
 ======================
 
 Native camera {#native-camera-section}
