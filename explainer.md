@@ -19,7 +19,7 @@ Granting the camera access to the application could allow the applications to:
 - Run custom computer vision algorithms on the data obtained from the camera texture. It may for example enable applications to semantically annotate regions of the image, for example to provide features related to accessibility.
 
 ## Non-Goals
-This API is currently targeted at primarily supporting smartphone use-cases. Namely, cases where there is a single camera image being displayed behind the AR content. Specifically, the camera view should exactly match the displayed view and each provided raw image is specifically associated with the camera pose used for drawing the AR content. As such, this API is not intended to support asynchronous image access, or to handle the case of multiple/stereo cameras.
+This API is currently targeted at primarily supporting smartphone use-cases. Namely, cases where there is a single camera image being displayed behind the AR content. Specifically, the camera view should exactly match the displayed view and each provided raw image is specifically associated with the camera pose used for drawing the AR content. As such, this API is not intended to support asynchronous image access. Though the API shape should not preclude using it in the case of multiple or stereo cameras (via e.g. secondary views) it was not designed with this use-case in mind, and it was not a goal to support this when developing the API shape.
 
 ## Specification:
 The specification may be found [here](https://immersive-web.github.io/raw-camera-access/).
