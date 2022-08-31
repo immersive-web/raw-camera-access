@@ -20,9 +20,13 @@ Abstract: This specification provides a means to access the raw camera image dis
 </pre>
 
 <pre class="link-defaults">
+spec:permissions-1;
+    type:dfn; text:powerful feature
 </pre>
 
 <pre class="anchors">
+spec: Media Capture and Streams; urlPrefix: https://www.w3.org/TR/mediacapture-streams/#
+    type: dfn; text: camera; url: dfn-camera
 spec: WebGL; urlPrefix: https://www.khronos.org/registry/webgl/specs/latest/1.0/#
     type: interface; text: WebGLTexture; url: 5.9
 spec: WebXR Layers; urlPrefix: https://immersive-web.github.io/layers/#
@@ -296,6 +300,8 @@ Some examples of interacting with the user directly are:
 2. Displaying a series of permission prompts that would take into consideration various levels of user consent needed in order to create a session with the requested and optional features provided by the application to {{XRSystem/requestSession()}} call.
 
 It is the intent of this specification to ensure that the user agent does not encourage app developers to ask for [=camera-access=] feature if the experience they want to provide does not absolutely require it. Due to privacy implications of the feature, user agents are allowed to introduce additional friction when a site asks for access to the camera images, with the hopes that this would incentivize the applications to not ask for the feature needlessly.
+
+User Agents SHOULD consider re-using permissions UI (or permissions granted to the origin already) for the [=powerful feature=] "[=camera=]".
 
 </section>
 
