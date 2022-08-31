@@ -1,5 +1,7 @@
 # WebXR Raw Camera Access
 
+*Note: "Raw" in the context of this specification should be taken to mean "direct" not "RAW" as in the camera format.*
+
 ## Overview
 
 Currently, to protect user privacy, WebXR Device API does not provide a way to grant raw camera access to the sites. Additionally, alternative ways for sites to obtain raw camera access (`getUserMedia()` web API) are not going to provide the application pose-synchronized camera images that could be integrated with WebXR Device API. For some scenarios, this limitation may pose a significant barrier to adoption of WebXR.

@@ -873,6 +873,7 @@ c-[il] { color: #000000 } /* Literal.Number.Integer.Long */
       <p>Displaying a series of permission prompts that would take into consideration various levels of user consent needed in order to create a session with the requested and optional features provided by the application to <code class="idl"><a data-link-type="idl" href="https://immersive-web.github.io/webxr/#dom-xrsystem-requestsession" id="ref-for-dom-xrsystem-requestsession">requestSession()</a></code> call.</p>
     </ol>
     <p>It is the intent of this specification to ensure that the user agent does not encourage app developers to ask for <a data-link-type="dfn" href="#camera-access" id="ref-for-camera-access④">camera-access</a> feature if the experience they want to provide does not absolutely require it. Due to privacy implications of the feature, user agents are allowed to introduce additional friction when a site asks for access to the camera images, with the hopes that this would incentivize the applications to not ask for the feature needlessly.</p>
+    <p>User Agents should consider re-using permissions UI (or permissions granted to the origin already) for the <a data-link-type="dfn" href="https://w3c.github.io/permissions/#dfn-powerful-feature" id="ref-for-dfn-powerful-feature">powerful feature</a> "<a data-link-type="dfn" href="https://www.w3.org/TR/mediacapture-streams/#dfn-camera" id="ref-for-dfn-camera">camera</a>".</p>
    </section>
    <h3 class="heading settled" data-level="5.2" id="privacy-indicators"><span class="secno">5.2. </span><span class="content">Privacy indicators</span><a class="self-link" href="#privacy-indicators"></a></h3>
    <p>The user agent MUST display a privacy indicator every time an <code class="idl"><a data-link-type="idl" href="https://www.w3.org/TR/webxr/#xrsession-interface" id="ref-for-xrsession-interface①">XRSession</a></code> with <a data-link-type="dfn" href="#camera-access" id="ref-for-camera-access⑤">camera-access</a> has been created and has not yet <a data-link-type="dfn" href="https://www.w3.org/TR/webxr/#ended" id="ref-for-ended">ended</a>. If it ever becomes possible to modify a <a data-link-type="dfn" href="https://www.w3.org/TR/webxr/#set-of-granted-features" id="ref-for-set-of-granted-features①">set of granted features</a> of a session after a session has been created, the indicator SHOULD be displayed for at least as long as the <a data-link-type="dfn" href="#camera-access" id="ref-for-camera-access⑥">camera-access</a> feature descriptor is <a data-link-type="dfn" href="https://infra.spec.whatwg.org/#list-contain" id="ref-for-list-contain①">contained</a> in the <a data-link-type="dfn" href="https://www.w3.org/TR/webxr/#set-of-granted-features" id="ref-for-set-of-granted-features②">set of granted features</a> of the session.</p>
@@ -957,6 +958,18 @@ c-[il] { color: #000000 } /* Literal.Number.Integer.Long */
    <ul>
     <li><a href="#ref-for-list-contain">3.1. XRView</a>
     <li><a href="#ref-for-list-contain①">5.2. Privacy indicators</a>
+   </ul>
+  </aside>
+  <aside class="dfn-panel" data-for="term-for-dfn-camera">
+   <a href="https://www.w3.org/TR/mediacapture-streams/#dfn-camera">https://www.w3.org/TR/mediacapture-streams/#dfn-camera</a><b>Referenced in:</b>
+   <ul>
+    <li><a href="#ref-for-dfn-camera">5.1. User experience</a>
+   </ul>
+  </aside>
+  <aside class="dfn-panel" data-for="term-for-dfn-powerful-feature">
+   <a href="https://w3c.github.io/permissions/#dfn-powerful-feature">https://w3c.github.io/permissions/#dfn-powerful-feature</a><b>Referenced in:</b>
+   <ul>
+    <li><a href="#ref-for-dfn-powerful-feature">5.1. User experience</a>
    </ul>
   </aside>
   <aside class="dfn-panel" data-for="term-for-5.9">
@@ -1153,6 +1166,16 @@ c-[il] { color: #000000 } /* Literal.Number.Integer.Long */
      <li><span class="dfn-paneled" id="term-for-list-contain">contain</span>
     </ul>
    <li>
+    <a data-link-type="biblio">[MEDIA CAPTURE AND STREAMS]</a> defines the following terms:
+    <ul>
+     <li><span class="dfn-paneled" id="term-for-dfn-camera">camera</span>
+    </ul>
+   <li>
+    <a data-link-type="biblio">[PERMISSIONS]</a> defines the following terms:
+    <ul>
+     <li><span class="dfn-paneled" id="term-for-dfn-powerful-feature">powerful feature</span>
+    </ul>
+   <li>
     <a data-link-type="biblio">[WEBGL-2]</a> defines the following terms:
     <ul>
      <li><span class="dfn-paneled" id="term-for-5.9">WebGLTexture</span>
@@ -1220,6 +1243,8 @@ c-[il] { color: #000000 } /* Literal.Number.Integer.Long */
   </dl>
   <h3 class="no-num no-ref heading settled" id="informative"><span class="content">Informative References</span><a class="self-link" href="#informative"></a></h3>
   <dl>
+   <dt id="biblio-permissions">[PERMISSIONS]
+   <dd>Marcos Caceres; Mike Taylor. <a href="https://w3c.github.io/permissions/"><cite>Permissions</cite></a>. URL: <a href="https://w3c.github.io/permissions/">https://w3c.github.io/permissions/</a>
    <dt id="biblio-webxr">[WEBXR]
    <dd>Brandon Jones; Manish Goregaokar; Rik Cabanier. <a href="https://immersive-web.github.io/webxr/"><cite>WebXR Device API</cite></a>. URL: <a href="https://immersive-web.github.io/webxr/">https://immersive-web.github.io/webxr/</a>
    <dt id="biblio-webxr-1">[WEBXR-1]
