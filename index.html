@@ -5,9 +5,11 @@
   <title>WebXR Raw Camera Access Module</title>
   <meta content="CG-DRAFT" name="w3c-status">
   <link href="https://www.w3.org/StyleSheets/TR/2021/cg-draft" rel="stylesheet">
-  <link href="https://www.w3.org/2008/site/images/favicon.ico" rel="icon">
-  <meta content="Bikeshed version 44af0bf3e, updated Fri Jul 29 17:05:16 2022 -0700" name="generator">
+  <meta content="Bikeshed version b25686b9f, updated Fri Mar 14 14:15:20 2025 -0700" name="generator">
   <link href="https://immersive-web.github.io/raw-camera-access/" rel="canonical">
+  <link href="https://www.w3.org/2008/site/images/favicon.ico" rel="icon">
+  <meta content="dark light" name="color-scheme">
+  <link href="https://www.w3.org/StyleSheets/TR/2021/dark.css" media="(prefers-color-scheme: dark)" rel="stylesheet" type="text/css">
 <style>
   .non-normative::before {
     content: "This section is non-normative.";
@@ -64,8 +66,7 @@
     float: none;
   }
 </style>
-<style>/* style-autolinks */
-
+<style>/* Boilerplate: style-autolinks */
 .css.css, .property.property, .descriptor.descriptor {
     color: var(--a-normal-text);
     font-size: inherit;
@@ -125,9 +126,17 @@ pre .property::before, pre .property::after {
 
 [data-link-type=biblio] {
     white-space: pre;
-}</style>
-<style>/* style-colors */
+}
 
+@media (prefers-color-scheme: dark) {
+    :root {
+        --selflink-text: black;
+        --selflink-bg: silver;
+        --selflink-hover-text: white;
+    }
+}
+</style>
+<style>/* Boilerplate: style-colors */
 /* Any --*-text not paired with a --*-bg is assumed to have a transparent bg */
 :root {
     color-scheme: light dark;
@@ -234,224 +243,7 @@ pre .property::before, pre .property::after {
     --outdated-shadow: red;
 
     --editedrec-bg: darkorange;
-}</style>
-<style>/* style-counters */
-
-body {
-    counter-reset: example figure issue;
 }
-.issue {
-    counter-increment: issue;
-}
-.issue:not(.no-marker)::before {
-    content: "Issue " counter(issue);
-}
-
-.example {
-    counter-increment: example;
-}
-.example:not(.no-marker)::before {
-    content: "Example " counter(example);
-}
-.invalid.example:not(.no-marker)::before,
-.illegal.example:not(.no-marker)::before {
-    content: "Invalid Example" counter(example);
-}
-
-figcaption {
-    counter-increment: figure;
-}
-figcaption:not(.no-marker)::before {
-    content: "Figure " counter(figure) " ";
-}</style>
-<style>/* style-dfn-panel */
-
-:root {
-    --dfnpanel-bg: #ddd;
-    --dfnpanel-text: var(--text);
-}
-.dfn-panel {
-    position: absolute;
-    z-index: 35;
-    height: auto;
-    width: -webkit-fit-content;
-    width: fit-content;
-    max-width: 300px;
-    max-height: 500px;
-    overflow: auto;
-    padding: 0.5em 0.75em;
-    font: small Helvetica Neue, sans-serif, Droid Sans Fallback;
-    background: var(--dfnpanel-bg);
-    color: var(--dfnpanel-text);
-    border: outset 0.2em;
-}
-.dfn-panel:not(.on) { display: none; }
-.dfn-panel * { margin: 0; padding: 0; text-indent: 0; }
-.dfn-panel > b { display: block; }
-.dfn-panel a { color: var(--dfnpanel-text); }
-.dfn-panel a:not(:hover) { text-decoration: none !important; border-bottom: none !important; }
-.dfn-panel > b + b { margin-top: 0.25em; }
-.dfn-panel ul { padding: 0; }
-.dfn-panel li { list-style: inside; }
-.dfn-panel.activated {
-    display: inline-block;
-    position: fixed;
-    left: .5em;
-    bottom: 2em;
-    margin: 0 auto;
-    max-width: calc(100vw - 1.5em - .4em - .5em);
-    max-height: 30vh;
-}
-
-.dfn-paneled { cursor: pointer; }
-</style>
-<style>/* style-issues */
-
-a[href].issue-return {
-    float: right;
-    float: inline-end;
-    color: var(--issueheading-text);
-    font-weight: bold;
-    text-decoration: none;
-}
-</style>
-<style>/* style-md-lists */
-
-/* This is a weird hack for me not yet following the commonmark spec
-   regarding paragraph and lists. */
-[data-md] > :first-child {
-    margin-top: 0;
-}
-[data-md] > :last-child {
-    margin-bottom: 0;
-}</style>
-<style>/* style-selflinks */
-
-:root {
-    --selflink-text: white;
-    --selflink-bg: gray;
-    --selflink-hover-text: black;
-}
-.heading, .issue, .note, .example, li, dt {
-    position: relative;
-}
-a.self-link {
-    position: absolute;
-    top: 0;
-    left: calc(-1 * (3.5rem - 26px));
-    width: calc(3.5rem - 26px);
-    height: 2em;
-    text-align: center;
-    border: none;
-    transition: opacity .2s;
-    opacity: .5;
-}
-a.self-link:hover {
-    opacity: 1;
-}
-.heading > a.self-link {
-    font-size: 83%;
-}
-li > a.self-link {
-    left: calc(-1 * (3.5rem - 26px) - 2em);
-}
-dfn > a.self-link {
-    top: auto;
-    left: auto;
-    opacity: 0;
-    width: 1.5em;
-    height: 1.5em;
-    background: var(--selflink-bg);
-    color: var(--selflink-text);
-    font-style: normal;
-    transition: opacity .2s, background-color .2s, color .2s;
-}
-dfn:hover > a.self-link {
-    opacity: 1;
-}
-dfn > a.self-link:hover {
-    color: var(--selflink-hover-text);
-}
-
-a.self-link::before            { content: "¶"; }
-.heading > a.self-link::before { content: "§"; }
-dfn > a.self-link::before      { content: "#"; }
-</style>
-<style>/* style-syntax-highlighting */
-
-            pre.idl.highlight {
-                background: var(--borderedblock-bg, var(--def-bg));
-            }
-            
-code.highlight { padding: .1em; border-radius: .3em; }
-pre.highlight, pre > code.highlight { display: block; padding: 1em; margin: .5em 0; overflow: auto; border-radius: 0; }
-
-.highlight:not(.idl) { background: rgba(0, 0, 0, .03); }
-c-[a] { color: #990055 } /* Keyword.Declaration */
-c-[b] { color: #990055 } /* Keyword.Type */
-c-[c] { color: #708090 } /* Comment */
-c-[d] { color: #708090 } /* Comment.Multiline */
-c-[e] { color: #0077aa } /* Name.Attribute */
-c-[f] { color: #669900 } /* Name.Tag */
-c-[g] { color: #222222 } /* Name.Variable */
-c-[k] { color: #990055 } /* Keyword */
-c-[l] { color: #000000 } /* Literal */
-c-[m] { color: #000000 } /* Literal.Number */
-c-[n] { color: #0077aa } /* Name */
-c-[o] { color: #999999 } /* Operator */
-c-[p] { color: #999999 } /* Punctuation */
-c-[s] { color: #a67f59 } /* Literal.String */
-c-[t] { color: #a67f59 } /* Literal.String.Single */
-c-[u] { color: #a67f59 } /* Literal.String.Double */
-c-[cp] { color: #708090 } /* Comment.Preproc */
-c-[c1] { color: #708090 } /* Comment.Single */
-c-[cs] { color: #708090 } /* Comment.Special */
-c-[kc] { color: #990055 } /* Keyword.Constant */
-c-[kn] { color: #990055 } /* Keyword.Namespace */
-c-[kp] { color: #990055 } /* Keyword.Pseudo */
-c-[kr] { color: #990055 } /* Keyword.Reserved */
-c-[ld] { color: #000000 } /* Literal.Date */
-c-[nc] { color: #0077aa } /* Name.Class */
-c-[no] { color: #0077aa } /* Name.Constant */
-c-[nd] { color: #0077aa } /* Name.Decorator */
-c-[ni] { color: #0077aa } /* Name.Entity */
-c-[ne] { color: #0077aa } /* Name.Exception */
-c-[nf] { color: #0077aa } /* Name.Function */
-c-[nl] { color: #0077aa } /* Name.Label */
-c-[nn] { color: #0077aa } /* Name.Namespace */
-c-[py] { color: #0077aa } /* Name.Property */
-c-[ow] { color: #999999 } /* Operator.Word */
-c-[mb] { color: #000000 } /* Literal.Number.Bin */
-c-[mf] { color: #000000 } /* Literal.Number.Float */
-c-[mh] { color: #000000 } /* Literal.Number.Hex */
-c-[mi] { color: #000000 } /* Literal.Number.Integer */
-c-[mo] { color: #000000 } /* Literal.Number.Oct */
-c-[sb] { color: #a67f59 } /* Literal.String.Backtick */
-c-[sc] { color: #a67f59 } /* Literal.String.Char */
-c-[sd] { color: #a67f59 } /* Literal.String.Doc */
-c-[se] { color: #a67f59 } /* Literal.String.Escape */
-c-[sh] { color: #a67f59 } /* Literal.String.Heredoc */
-c-[si] { color: #a67f59 } /* Literal.String.Interpol */
-c-[sx] { color: #a67f59 } /* Literal.String.Other */
-c-[sr] { color: #a67f59 } /* Literal.String.Regex */
-c-[ss] { color: #a67f59 } /* Literal.String.Symbol */
-c-[vc] { color: #0077aa } /* Name.Variable.Class */
-c-[vg] { color: #0077aa } /* Name.Variable.Global */
-c-[vi] { color: #0077aa } /* Name.Variable.Instance */
-c-[il] { color: #000000 } /* Literal.Number.Integer.Long */
-</style>
-<style>/* style-var-click-highlighting */
-
-    var { cursor: pointer; }
-    var.selected0 { background-color: #F4D200; box-shadow: 0 0 0 2px #F4D200; }
-    var.selected1 { background-color: #FF87A2; box-shadow: 0 0 0 2px #FF87A2; }
-    var.selected2 { background-color: #96E885; box-shadow: 0 0 0 2px #96E885; }
-    var.selected3 { background-color: #3EEED2; box-shadow: 0 0 0 2px #3EEED2; }
-    var.selected4 { background-color: #EACFB6; box-shadow: 0 0 0 2px #EACFB6; }
-    var.selected5 { background-color: #82DDFF; box-shadow: 0 0 0 2px #82DDFF; }
-    var.selected6 { background-color: #FFBCF2; box-shadow: 0 0 0 2px #FFBCF2; }
-    </style>
-<style>/* style-darkmode */
 
 @media (prefers-color-scheme: dark) {
     :root {
@@ -564,20 +356,334 @@ c-[il] { color: #000000 } /* Literal.Number.Integer.Long */
        which is quite common in practice... */
     img { background: white; }
 }
-@media (prefers-color-scheme: dark) {
-    :root {
-        --selflink-text: black;
-        --selflink-bg: silver;
-        --selflink-hover-text: white;
-    }
+</style>
+<style>/* Boilerplate: style-counters */
+body {
+    counter-reset: example figure issue;
+}
+.issue {
+    counter-increment: issue;
+}
+.issue:not(.no-marker)::before {
+    content: "Issue " counter(issue);
 }
 
+.example {
+    counter-increment: example;
+}
+.example:not(.no-marker)::before {
+    content: "Example " counter(example);
+}
+.invalid.example:not(.no-marker)::before,
+.illegal.example:not(.no-marker)::before {
+    content: "Invalid Example" counter(example);
+}
+
+figcaption {
+    counter-increment: figure;
+}
+figcaption:not(.no-marker)::before {
+    content: "Figure " counter(figure) " ";
+}
+</style>
+<style>/* Boilerplate: style-dfn-panel */
+:root {
+    --dfnpanel-bg: #ddd;
+    --dfnpanel-text: var(--text);
+    --dfnpanel-target-bg: #ffc;
+    --dfnpanel-target-outline: orange;
+}
 @media (prefers-color-scheme: dark) {
     :root {
         --dfnpanel-bg: #222;
         --dfnpanel-text: var(--text);
+        --dfnpanel-target-bg: #333;
+        --dfnpanel-target-outline: silver;
     }
 }
+.dfn-panel {
+    position: absolute;
+    z-index: 35;
+    width: 20em;
+    width: 300px;
+    height: auto;
+    max-height: 500px;
+    overflow: auto;
+    padding: 0.5em 0.75em;
+    font: small Helvetica Neue, sans-serif, Droid Sans Fallback;
+    background: var(--dfnpanel-bg);
+    color: var(--dfnpanel-text);
+    border: outset 0.2em;
+    white-space: normal; /* in case it's moved into a pre */
+}
+.dfn-panel:not(.on) { display: none; }
+.dfn-panel * { margin: 0; padding: 0; text-indent: 0; }
+.dfn-panel > b { display: block; }
+.dfn-panel a { color: var(--dfnpanel-text); }
+.dfn-panel a:not(:hover) { text-decoration: none !important; border-bottom: none !important; }
+.dfn-panel a:focus {
+    outline: 5px auto Highlight;
+    outline: 5px auto -webkit-focus-ring-color;
+}
+.dfn-panel > b + b { margin-top: 0.25em; }
+.dfn-panel ul { padding: 0 0 0 1em; list-style: none; }
+.dfn-panel li a {
+    max-width: calc(300px - 1.5em - 1em);
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.dfn-panel.activated {
+    display: inline-block;
+    position: fixed;
+    left: 8px;
+    bottom: 2em;
+    margin: 0 auto;
+    max-width: calc(100vw - 1.5em - .4em - .5em);
+    max-height: 30vh;
+    transition: left 1s ease-out, bottom 1s ease-out;
+}
+
+.dfn-panel .link-item:hover {
+    text-decoration: underline;
+}
+.dfn-panel .link-item .copy-icon {
+    opacity: 0;
+}
+.dfn-panel .link-item:hover .copy-icon,
+.dfn-panel .link-item .copy-icon:focus {
+    opacity: 1;
+}
+
+.dfn-panel .copy-icon {
+    display: inline-block;
+    margin-right: 0.5em;
+    width: 0.85em;
+    height: 1em;
+    border-radius: 3px;
+    background-color: #ccc;
+    cursor: pointer;
+}
+
+.dfn-panel .copy-icon .icon {
+    width: 100%;
+    height: 100%;
+    background-color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+.dfn-panel .copy-icon .icon::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: 1px solid black;
+    background-color: #ccc;
+    opacity: 0.25;
+    transform: translate(3px, -3px);
+}
+
+.dfn-panel .copy-icon:active .icon::before {
+    opacity: 1;
+}
+
+.dfn-paneled[role="button"] { cursor: help; }
+
+.highlighted {
+    animation: target-fade 3s;
+}
+
+@keyframes target-fade {
+    from {
+        background-color: var(--dfnpanel-target-bg);
+        outline: 5px solid var(--dfnpanel-target-outline);
+    }
+    to {
+        color: var(--a-normal-text);
+        background-color: transparent;
+        outline: transparent;
+    }
+}
+</style>
+<style>/* Boilerplate: style-idl-highlighting */
+pre.idl.highlight {
+    background: var(--borderedblock-bg, var(--def-bg));
+}
+</style>
+<style>/* Boilerplate: style-issues */
+a[href].issue-return {
+    float: right;
+    float: inline-end;
+    color: var(--issueheading-text);
+    font-weight: bold;
+    text-decoration: none;
+}
+</style>
+<style>/* Boilerplate: style-md-lists */
+/* This is a weird hack for me not yet following the commonmark spec
+   regarding paragraph and lists. */
+[data-md] > :first-child {
+    margin-top: 0;
+}
+[data-md] > :last-child {
+    margin-bottom: 0;
+}
+</style>
+<style>/* Boilerplate: style-ref-hints */
+:root {
+    --ref-hint-bg: #ddd;
+    --ref-hint-text: var(--text);
+}
+@media (prefers-color-scheme: dark) {
+    :root {
+        --ref-hint-bg: #222;
+        --ref-hint-text: var(--text);
+    }
+}
+
+.ref-hint {
+    display: inline-block;
+    position: absolute;
+    z-index: 35;
+    width: 20em;
+    width: 300px;
+    height: auto;
+    max-height: 500px;
+    overflow: auto;
+    padding: 0.5em 0.5em;
+    font: small Helvetica Neue, sans-serif, Droid Sans Fallback;
+    background: var(--ref-hint-bg);
+    color: var(--ref-hint-text);
+    border: outset 0.2em;
+    white-space: normal; /* in case it's moved into a pre */
+}
+
+.ref-hint * { margin: 0; padding: 0; text-indent: 0; }
+
+.ref-hint ul { padding: 0 0 0 1em; list-style: none; }
+</style>
+<style>/* Boilerplate: style-selflinks */
+:root {
+    --selflink-text: white;
+    --selflink-bg: gray;
+    --selflink-hover-text: black;
+}
+.heading, .issue, .note, .example, li, dt {
+    position: relative;
+}
+a.self-link {
+    position: absolute;
+    top: 0;
+    left: calc(-1 * (3.5rem - 26px));
+    width: calc(3.5rem - 26px);
+    height: 2em;
+    text-align: center;
+    border: none;
+    transition: opacity .2s;
+    opacity: .5;
+}
+a.self-link:hover {
+    opacity: 1;
+}
+.heading > a.self-link {
+    font-size: 83%;
+}
+.example > a.self-link,
+.note > a.self-link,
+.issue > a.self-link {
+    /* These blocks are overflow:auto, so positioning outside
+       doesn't work. */
+    left: auto;
+    right: 0;
+}
+li > a.self-link {
+    left: calc(-1 * (3.5rem - 26px) - 2em);
+}
+dfn > a.self-link {
+    top: auto;
+    left: auto;
+    opacity: 0;
+    width: 1.5em;
+    height: 1.5em;
+    background: var(--selflink-bg);
+    color: var(--selflink-text);
+    font-style: normal;
+    transition: opacity .2s, background-color .2s, color .2s;
+}
+dfn:hover > a.self-link {
+    opacity: 1;
+}
+dfn > a.self-link:hover {
+    color: var(--selflink-hover-text);
+}
+
+a.self-link::before            { content: "¶"; }
+.heading > a.self-link::before { content: "§"; }
+dfn > a.self-link::before      { content: "#"; }
+</style>
+<style>/* Boilerplate: style-syntax-highlighting */
+code.highlight { padding: .1em; border-radius: .3em; }
+pre.highlight, pre > code.highlight { display: block; padding: 1em; margin: .5em 0; overflow: auto; border-radius: 0; }
+
+.highlight:not(.idl) { background: rgba(0, 0, 0, .03); }
+c-[a] { color: #990055 } /* Keyword.Declaration */
+c-[b] { color: #990055 } /* Keyword.Type */
+c-[c] { color: #708090 } /* Comment */
+c-[d] { color: #708090 } /* Comment.Multiline */
+c-[e] { color: #0077aa } /* Name.Attribute */
+c-[f] { color: #669900 } /* Name.Tag */
+c-[g] { color: #222222 } /* Name.Variable */
+c-[k] { color: #990055 } /* Keyword */
+c-[l] { color: #000000 } /* Literal */
+c-[m] { color: #000000 } /* Literal.Number */
+c-[n] { color: #0077aa } /* Name */
+c-[o] { color: #999999 } /* Operator */
+c-[p] { color: #999999 } /* Punctuation */
+c-[s] { color: #a67f59 } /* Literal.String */
+c-[t] { color: #a67f59 } /* Literal.String.Single */
+c-[u] { color: #a67f59 } /* Literal.String.Double */
+c-[cp] { color: #708090 } /* Comment.Preproc */
+c-[c1] { color: #708090 } /* Comment.Single */
+c-[cs] { color: #708090 } /* Comment.Special */
+c-[kc] { color: #990055 } /* Keyword.Constant */
+c-[kn] { color: #990055 } /* Keyword.Namespace */
+c-[kp] { color: #990055 } /* Keyword.Pseudo */
+c-[kr] { color: #990055 } /* Keyword.Reserved */
+c-[ld] { color: #000000 } /* Literal.Date */
+c-[nc] { color: #0077aa } /* Name.Class */
+c-[no] { color: #0077aa } /* Name.Constant */
+c-[nd] { color: #0077aa } /* Name.Decorator */
+c-[ni] { color: #0077aa } /* Name.Entity */
+c-[ne] { color: #0077aa } /* Name.Exception */
+c-[nf] { color: #0077aa } /* Name.Function */
+c-[nl] { color: #0077aa } /* Name.Label */
+c-[nn] { color: #0077aa } /* Name.Namespace */
+c-[py] { color: #0077aa } /* Name.Property */
+c-[ow] { color: #999999 } /* Operator.Word */
+c-[mb] { color: #000000 } /* Literal.Number.Bin */
+c-[mf] { color: #000000 } /* Literal.Number.Float */
+c-[mh] { color: #000000 } /* Literal.Number.Hex */
+c-[mi] { color: #000000 } /* Literal.Number.Integer */
+c-[mo] { color: #000000 } /* Literal.Number.Oct */
+c-[sb] { color: #a67f59 } /* Literal.String.Backtick */
+c-[sc] { color: #a67f59 } /* Literal.String.Char */
+c-[sd] { color: #a67f59 } /* Literal.String.Doc */
+c-[se] { color: #a67f59 } /* Literal.String.Escape */
+c-[sh] { color: #a67f59 } /* Literal.String.Heredoc */
+c-[si] { color: #a67f59 } /* Literal.String.Interpol */
+c-[sx] { color: #a67f59 } /* Literal.String.Other */
+c-[sr] { color: #a67f59 } /* Literal.String.Regex */
+c-[ss] { color: #a67f59 } /* Literal.String.Symbol */
+c-[vc] { color: #0077aa } /* Name.Variable.Class */
+c-[vg] { color: #0077aa } /* Name.Variable.Global */
+c-[vi] { color: #0077aa } /* Name.Variable.Instance */
+c-[il] { color: #000000 } /* Literal.Number.Integer.Long */
+
 @media (prefers-color-scheme: dark) {
     .highlight:not(.idl) { background: rgba(255, 255, 255, .05); }
 
@@ -641,11 +747,54 @@ c-[il] { color: #000000 } /* Literal.Number.Integer.Long */
     c-[il] { color: #657b83 } /* Literal.Number.Integer.Long */
 }
 </style>
+<style>/* Boilerplate: style-var-click-highlighting */
+/*
+Colors were chosen in Lab using https://nixsensor.com/free-color-converter/
+D50 2deg illuminant, L in [0,100], a and b in [-128, 128]
+0 = lab(85,0,85)
+1 = lab(85,80,30)
+2 = lab(85,-40,40)
+3 = lab(85,-50,0)
+4 = lab(85,5,15)
+5 = lab(85,-10,-50)
+6 = lab(85,35,-15)
+
+For darkmode:
+0 = oklab(50%   0%  108%)
+1 = oklab(50% -51%   51%)
+2 = oklab(50% -64%  -20%)
+3 = oklab(50%   6%   19%)
+4 = oklab(50% -12%  -64%)
+5 = oklab(50%  44%  -19%)  
+6 = oklab(50% 102%   38%)
+*/
+
+[data-algorithm] var { cursor: pointer; }
+var[data-var-color] { background-color: var(--var-bg); box-shadow: 0 0 0 2px var(--var-bg); }
+
+var[data-var-color] { --var-bg: #F4D200; }
+var[data-var-color="1"] { --var-bg: #FF87A2; }
+var[data-var-color="2"] { --var-bg: #96E885; }
+var[data-var-color="3"] { --var-bg: #3EEED2; }
+var[data-var-color="4"] { --var-bg: #EACFB6; }
+var[data-var-color="5"] { --var-bg: #82DDFF; }
+var[data-var-color="6"] { --var-vg: #FFBCF2; }
+
+@media (prefers-color-scheme: dark) {
+	var[data-var-color] { --var-bg: #bc1a00; }
+	var[data-var-color="1"] { --var-bg: #007f00; }
+	var[data-var-color="2"] { --var-bg: #008698; }
+	var[data-var-color="3"] { --var-bg: #7f5b2b; }
+	var[data-var-color="4"] { --var-bg: #004df3; }
+	var[data-var-color="5"] { --var-bg: #a1248a; }
+	var[data-var-color="6"] { --var-vg: #ff0000; }
+}
+</style>
  <body class="h-entry">
   <div class="head">
    <p data-fill-with="logo"><a class="logo" href="https://www.w3.org/"> <img alt="W3C" height="48" src="https://www.w3.org/StyleSheets/TR/2021/logos/W3C" width="72"> </a> </p>
    <h1 class="p-name no-ref" id="title">WebXR Raw Camera Access Module</h1>
-   <p id="w3c-state"><a href="https://www.w3.org/standards/types#CG-DRAFT">Draft Community Group Report</a>, <time class="dt-updated" datetime="2022-08-31">31 August 2022</time></p>
+   <p id="w3c-state"><a href="https://www.w3.org/standards/types/#CG-DRAFT">Draft Community Group Report</a>, <time class="dt-updated" datetime="2025-05-21">21 May 2025</time></p>
    <details open>
     <summary>More details about this document</summary>
     <div data-fill-with="spec-metadata">
@@ -656,7 +805,9 @@ c-[il] { color: #000000 } /* Literal.Number.Integer.Long */
       <dd><a href="https://github.com/immersive-web/raw-camera-access/issues/">GitHub</a>
       <dd><a href="#issues-index">Inline In Spec</a>
       <dt class="editor">Editor:
-      <dd class="editor p-author h-card vcard" data-editor-id="114482"><a class="p-name fn u-email email" href="mailto:bialpio@google.com">Piotr Bialecki</a> (<a class="p-org org" href="http://google.com/">Google</a>)
+      <dd class="editor p-author h-card vcard" data-editor-id="114716"><a class="p-name fn u-email email" href="mailto:alcooper@google.com">Alex Cooper</a> (<a class="p-org org" href="http://google.com/">Google</a>)
+      <dt class="editor">Former Editor:
+      <dd class="editor p-author h-card vcard" data-editor-id="114482"><a class="p-name fn u-email email" href="mailto:bialpio@google.com">Piotr Bialecki</a> (<a class="p-org org" href="https://google.com/">Google</a>)
       <dt>Participate:
       <dd><a href="https://github.com/immersive-web/raw-camera-access/issues/new">File an issue</a> (<a href="https://github.com/immersive-web/raw-camera-access/issues">open issues</a>)
       <dd><a href="https://lists.w3.org/Archives/Public/public-immersive-web/">Mailing list archive</a>
@@ -667,7 +818,7 @@ c-[il] { color: #000000 } /* Literal.Number.Integer.Long */
     </div>
    </details>
    <div data-fill-with="warning"></div>
-   <p class="copyright" data-fill-with="copyright"><a href="https://www.w3.org/Consortium/Legal/ipr-notice#Copyright">Copyright</a> © 2022 <a href="https://www.w3.org/"><abbr title="World Wide Web Consortium">W3C</abbr></a><sup>®</sup> (<a href="https://www.csail.mit.edu/"><abbr title="Massachusetts Institute of Technology">MIT</abbr></a>, <a href="https://www.ercim.eu/"><abbr title="European Research Consortium for Informatics and Mathematics">ERCIM</abbr></a>, <a href="https://www.keio.ac.jp/">Keio</a>, <a href="https://ev.buaa.edu.cn/">Beihang</a>). W3C <a href="https://www.w3.org/Consortium/Legal/ipr-notice#Legal_Disclaimer">liability</a>, <a href="https://www.w3.org/Consortium/Legal/ipr-notice#W3C_Trademarks">trademark</a> and <a href="https://www.w3.org/Consortium/Legal/2015/copyright-software-and-document" rel="license">permissive document license</a> rules apply. </p>
+   <p class="copyright" data-fill-with="copyright"><a href="https://www.w3.org/policies/#copyright">Copyright</a> © 2025 <a href="https://www.w3.org/">World Wide Web Consortium</a>. <abbr title="World Wide Web Consortium">W3C</abbr><sup>®</sup> <a href="https://www.w3.org/policies/#Legal_Disclaimer">liability</a>, <a href="https://www.w3.org/policies/#W3C_Trademarks">trademark</a> and <a href="https://www.w3.org/copyright/software-license/" rel="license" title="W3C Software and Document License">permissive document license</a> rules apply. </p>
    <hr title="Separator for header">
   </div>
   <div class="p-summary" data-fill-with="abstract">
@@ -715,7 +866,6 @@ c-[il] { color: #000000 } /* Literal.Number.Integer.Long */
      <a href="#w3c-conformance"><span class="secno"></span> <span class="content">Conformance</span></a>
      <ol class="toc">
       <li><a href="#w3c-conventions"><span class="secno"></span> <span class="content">Document conventions</span></a>
-      <li><a href="#w3c-conformant-algorithms"><span class="secno"></span> <span class="content">Conformant Algorithms</span></a>
      </ol>
     <li>
      <a href="#index"><span class="secno"></span> <span class="content">Index</span></a>
@@ -737,7 +887,7 @@ c-[il] { color: #000000 } /* Literal.Number.Integer.Long */
    <h2 class="heading settled" data-level="1" id="intro"><span class="secno">1. </span><span class="content">Introduction</span><a class="self-link" href="#intro"></a></h2>
    <section class="non-normative">
     <p>This specification introduces new WebXR Device API capability, namely Raw Camera Access API. The newly introduced API enables WebXR-powered applications to access camera image pixels, allowing them to leverage this new information to compute custom per-frame visual effects, or take a snapshot of the app-rendered content overlaid with the camera image.</p>
-    <p class="note" role="note"><span>Note:</span> The API shape specified in this document primarily solves the smartphone-centric scenarios. See <a href="https://github.com/immersive-web/raw-camera-access/issues/2">issue #2</a> for context.</p>
+    <p class="note" role="note"><span class="marker">Note:</span> The API shape specified in this document primarily solves the smartphone-centric scenarios. See <a href="https://github.com/immersive-web/raw-camera-access/issues/2">issue #2</a> for context.</p>
    </section>
    <h3 class="heading settled" data-level="1.1" id="terminology"><span class="secno">1.1. </span><span class="content">Terminology</span><a class="self-link" href="#terminology"></a></h3>
    <p>This document uses the acronyms AR to signify Augmented Reality, and VR to signify Virtual Reality.</p>
@@ -814,7 +964,7 @@ c-[il] { color: #000000 } /* Literal.Number.Integer.Long */
    </div>
    <h3 class="heading settled" data-level="3.3" id="xr-web-gl-binding-section"><span class="secno">3.3. </span><span class="content">XRWebGLBinding</span><a class="self-link" href="#xr-web-gl-binding-section"></a></h3>
 <pre class="idl highlight def"><c- b>partial</c-> <c- b>interface</c-> <a class="idl-code" data-link-type="interface" href="https://immersive-web.github.io/layers/#XRWebGLBindingtype" id="ref-for-XRWebGLBindingtype①"><c- g>XRWebGLBinding</c-></a> {
-  <a data-link-type="idl-name" href="https://www.khronos.org/registry/webgl/specs/latest/1.0/#5.9" id="ref-for-5.9"><c- n>WebGLTexture</c-></a>? <dfn class="dfn-paneled idl-code" data-dfn-for="XRWebGLBinding" data-dfn-type="method" data-export data-lt="getCameraImage(camera)" id="dom-xrwebglbinding-getcameraimage"><code><c- g>getCameraImage</c-></code></dfn>(<a data-link-type="idl-name" href="#xrcamera" id="ref-for-xrcamera①⓪"><c- n>XRCamera</c-></a> <dfn class="idl-code" data-dfn-for="XRWebGLBinding/getCameraImage(camera)" data-dfn-type="argument" data-export id="dom-xrwebglbinding-getcameraimage-camera-camera"><code><c- g>camera</c-></code><a class="self-link" href="#dom-xrwebglbinding-getcameraimage-camera-camera"></a></dfn>);
+  <a data-link-type="idl-name" href="https://www.khronos.org/registry/webgl/specs/latest/1.0/#5.9" id="ref-for-5.9"><c- n>WebGLTexture</c-></a>? <dfn class="dfn-paneled idl-code" data-dfn-for="XRWebGLBinding" data-dfn-type="method" data-export data-lt="getCameraImage(camera)" id="dom-xrwebglbinding-getcameraimage"><code><c- g>getCameraImage</c-></code></dfn>(<a data-link-type="idl-name" href="#xrcamera" id="ref-for-xrcamera①⓪"><c- n>XRCamera</c-></a> <dfn class="dfn-paneled idl-code" data-dfn-for="XRWebGLBinding/getCameraImage(camera)" data-dfn-type="argument" data-export id="dom-xrwebglbinding-getcameraimage-camera-camera"><code><c- g>camera</c-></code></dfn>);
 };
 </pre>
    <p>The <code class="idl"><a data-link-type="idl" href="#dom-xrwebglbinding-getcameraimage" id="ref-for-dom-xrwebglbinding-getcameraimage">getCameraImage(camera)</a></code> method, when invoked, can be used to <a data-link-type="dfn" href="#obtain-camera-image" id="ref-for-obtain-camera-image">obtain camera image</a> from an <code class="idl"><a data-link-type="idl" href="https://immersive-web.github.io/layers/#XRWebGLBindingtype" id="ref-for-XRWebGLBindingtype②">XRWebGLBinding</a></code>. The returned <code class="idl"><a data-link-type="idl" href="https://www.khronos.org/registry/webgl/specs/latest/1.0/#5.9" id="ref-for-5.9①">WebGLTexture</a></code>, if non-<code>null</code>, is an <a data-link-type="dfn" href="https://immersive-web.github.io/layers/#opaque-texture" id="ref-for-opaque-texture">opaque texture</a>.</p>
@@ -844,19 +994,19 @@ c-[il] { color: #000000 } /* Literal.Number.Integer.Long */
     </ol>
    </div>
    <p>The user agent MAY cache the results of a call to <code class="idl"><a data-link-type="idl" href="#dom-xrwebglbinding-getcameraimage" id="ref-for-dom-xrwebglbinding-getcameraimage①">getCameraImage(camera)</a></code> to be returned for subsequent calls of the method, assuming that the cache is keyed by the binding and the camera instance. The user agent MUST perform initial validations even when using the cache by running up to step 6 (inclusive) of <a data-link-type="dfn" href="#obtain-camera-image" id="ref-for-obtain-camera-image①">obtain camera image</a> algorithm. Because this caching is permitted, the application SHOULD treat the returned <code class="idl"><a data-link-type="idl" href="https://www.khronos.org/registry/webgl/specs/latest/1.0/#5.9" id="ref-for-5.9③">WebGLTexture</a></code> as read-only.</p>
-   <p class="note" role="note"><span>Note:</span> caching is permitted because the user agent retains ownership of the lifetime of the returned <code class="idl"><a data-link-type="idl" href="https://www.khronos.org/registry/webgl/specs/latest/1.0/#5.9" id="ref-for-5.9④">WebGLTexture</a></code> (since it’s considered an <a data-link-type="dfn" href="https://immersive-web.github.io/layers/#opaque-texture" id="ref-for-opaque-texture②">opaque texture</a>), and because calling this method multiple times within the same <a data-link-type="dfn" href="https://www.w3.org/TR/webxr/#requestanimationframe" id="ref-for-requestanimationframe">requestAnimationFrame()</a> callback (ensured by using <code class="idl"><a data-link-type="idl" href="#xrcamera" id="ref-for-xrcamera①②">XRCamera</a></code>, &amp; therefore <code class="idl"><a data-link-type="idl" href="https://www.w3.org/TR/webxr/#xrframe-interface" id="ref-for-xrframe-interface">XRFrame</a></code> transitively as a part of the cache key), on the same binding (ensured by using <code class="idl"><a data-link-type="idl" href="https://immersive-web.github.io/layers/#XRWebGLBindingtype" id="ref-for-XRWebGLBindingtype④">XRWebGLBinding</a></code> as a part of the cache key), will result in textures with identical contents.</p>
+   <p class="note" role="note"><span class="marker">Note:</span> caching is permitted because the user agent retains ownership of the lifetime of the returned <code class="idl"><a data-link-type="idl" href="https://www.khronos.org/registry/webgl/specs/latest/1.0/#5.9" id="ref-for-5.9④">WebGLTexture</a></code> (since it’s considered an <a data-link-type="dfn" href="https://immersive-web.github.io/layers/#opaque-texture" id="ref-for-opaque-texture②">opaque texture</a>), and because calling this method multiple times within the same <a data-link-type="dfn" href="https://www.w3.org/TR/webxr/#requestanimationframe" id="ref-for-requestanimationframe">requestAnimationFrame()</a> callback (ensured by using <code class="idl"><a data-link-type="idl" href="#xrcamera" id="ref-for-xrcamera①②">XRCamera</a></code>, &amp; therefore <code class="idl"><a data-link-type="idl" href="https://www.w3.org/TR/webxr/#xrframe-interface" id="ref-for-xrframe-interface">XRFrame</a></code> transitively as a part of the cache key), on the same binding (ensured by using <code class="idl"><a data-link-type="idl" href="https://immersive-web.github.io/layers/#XRWebGLBindingtype" id="ref-for-XRWebGLBindingtype④">XRWebGLBinding</a></code> as a part of the cache key), will result in textures with identical contents.</p>
    <p>If the <code class="idl"><a data-link-type="idl" href="https://www.khronos.org/registry/webgl/specs/latest/1.0/#5.9" id="ref-for-5.9⑤">WebGLTexture</a></code> returned from a call to <code class="idl"><a data-link-type="idl" href="#dom-xrwebglbinding-getcameraimage" id="ref-for-dom-xrwebglbinding-getcameraimage②">getCameraImage(camera)</a></code> supports transparency, it MUST contain colors with premultiplied alpha.</p>
    <p class="issue" id="issue-63423cac"><a class="self-link" href="#issue-63423cac"></a> Should we specify more information about the returned <code class="idl"><a data-link-type="idl" href="https://www.khronos.org/registry/webgl/specs/latest/1.0/#5.9" id="ref-for-5.9⑥">WebGLTexture</a></code>? E.g.: is color-renderable, what is the texture format, etc.</p>
    <h2 class="heading settled" data-level="4" id="native-device-concepts"><span class="secno">4. </span><span class="content">Native device concepts</span><a class="self-link" href="#native-device-concepts"></a></h2>
    <h3 class="heading settled" data-level="4.1" id="native-camera-section"><span class="secno">4.1. </span><span class="content">Native camera</span><a class="self-link" href="#native-camera-section"></a></h3>
    <section class="non-normative">
     <p>Raw camera API specification assumes that the native device on top of which the API is implemented provides a way to access animation-frame-synchronized access to the camera image. Such a device is said to support a <dfn class="dfn-paneled" data-dfn-type="dfn" data-noexport id="native-camera">native camera</dfn> capability.</p>
-    <p>In addition for the device to being able to provide a camera image, the Raw Camera Access API can only provide camera image textures that are <a data-link-type="dfn" href="#aligned" id="ref-for-aligned①">aligned</a> with an <code class="idl"><a data-link-type="idl" href="https://www.w3.org/TR/webxr/#xrview-interface" id="ref-for-xrview-interface⑦">XRView</a></code> from which they are requested. The camera image is said to be <dfn class="dfn-paneled" data-dfn-type="dfn" data-noexport id="aligned">aligned</dfn> with the <code class="idl"><a data-link-type="idl" href="https://www.w3.org/TR/webxr/#xrview-interface" id="ref-for-xrview-interface⑧">XRView</a></code> if the camera pose is the same as the <code class="idl"><a data-link-type="idl" href="https://www.w3.org/TR/webxr/#xrview-interface" id="ref-for-xrview-interface⑨">XRView</a></code>'s pose, and the camera’s viewing frustum has the same shape as <code class="idl"><a data-link-type="idl" href="https://www.w3.org/TR/webxr/#xrview-interface" id="ref-for-xrview-interface①⓪">XRView</a></code>'s viewing frustum. If the camera image returned by the <a data-link-type="dfn" href="#native-camera" id="ref-for-native-camera②">native camera</a> covers a viewing frustum that entirely contains the <code class="idl"><a data-link-type="idl" href="https://www.w3.org/TR/webxr/#xrview-interface" id="ref-for-xrview-interface①①">XRView</a></code>'s viewing frustum, the user agent can crop the camera image as long as the operation causes the viewing frustum shapes to match exactly.</p>
+    <p>In addition for the device to being able to provide a camera image, the Raw Camera Access API can only provide camera image textures that are <a data-link-type="dfn" href="#aligned" id="ref-for-aligned①">aligned</a> with an <code class="idl"><a data-link-type="idl" href="https://www.w3.org/TR/webxr/#xrview-interface" id="ref-for-xrview-interface⑦">XRView</a></code> from which they are requested. The camera image is said to be <dfn class="dfn-paneled" data-dfn-type="dfn" data-noexport id="aligned">aligned</dfn> with the <code class="idl"><a data-link-type="idl" href="https://www.w3.org/TR/webxr/#xrview-interface" id="ref-for-xrview-interface⑧">XRView</a></code> if the camera pose is the same as the <code class="idl"><a data-link-type="idl" href="https://www.w3.org/TR/webxr/#xrview-interface" id="ref-for-xrview-interface⑨">XRView</a></code>’s pose, and the camera’s viewing frustum has the same shape as <code class="idl"><a data-link-type="idl" href="https://www.w3.org/TR/webxr/#xrview-interface" id="ref-for-xrview-interface①⓪">XRView</a></code>’s viewing frustum. If the camera image returned by the <a data-link-type="dfn" href="#native-camera" id="ref-for-native-camera②">native camera</a> covers a viewing frustum that entirely contains the <code class="idl"><a data-link-type="idl" href="https://www.w3.org/TR/webxr/#xrview-interface" id="ref-for-xrview-interface①①">XRView</a></code>’s viewing frustum, the user agent can crop the camera image as long as the operation causes the viewing frustum shapes to match exactly.</p>
    </section>
    <h2 class="heading settled" data-level="5" id="privacy-security"><span class="secno">5. </span><span class="content">Privacy &amp; Security Considerations</span><a class="self-link" href="#privacy-security"></a></h2>
    <section class="non-normative">
-    <p>The Raw Camera Access API has the highest privacy implications out of all currently available WebXR capabilities, in that it is the only API that allows the applications to directly observe the user’s environment. Due to this, the user agents should seek user consent prior to allowing creating sessions with <a data-link-type="dfn" href="#camera-access" id="ref-for-camera-access①">camera-access</a> feature enabled. Refer to <a href="https://immersive-web.github.io/webxr/#security"><cite>WebXR Device API</cite> § 13 Security, Privacy, and Comfort Considerations</a> &amp; <a href="https://immersive-web.github.io/webxr/#user-intention"><cite>WebXR Device API</cite> § 13.2 User intention</a> sections for more details, as well as <a href="#user-experience">§ 5.1 User experience</a> &amp; <a href="#privacy-indicators">§ 5.2 Privacy indicators</a> sections below.</p>
-    <p>The requirement that the provided camera images are <a data-link-type="dfn" href="#aligned" id="ref-for-aligned②">aligned</a> with the <code class="idl"><a data-link-type="idl" href="https://www.w3.org/TR/webxr/#xrview-interface" id="ref-for-xrview-interface①②">XRView</a></code>s offers a partial mitigation for impact of the API on users' privacy. A consequence of this requirement is that depending on the <a data-link-type="dfn" href="https://www.w3.org/TR/webxr/#xr-compositor" id="ref-for-xr-compositor">XR Compositor</a>'s <a data-link-type="dfn" href="https://immersive-web.github.io/webxr-ar-module/#blend-technique" id="ref-for-blend-technique">blend technique</a>, the camera image will contain the same information that the user may already be seeing, thus providing direct feedback about which parts of the environment are visible to the website. Note that in some cases it would be possible for the sites to suppress this information (e.g. on smartphones by rendering an opaque object that would encompass the entire view, thus occluding the environment rendered by the compositor).</p>
+    <p>The Raw Camera Access API has the highest privacy implications out of all currently available WebXR capabilities, in that it is the only API that allows the applications to directly observe the user’s environment. Due to this, the user agents should seek user consent prior to allowing creating sessions with <a data-link-type="dfn" href="#camera-access" id="ref-for-camera-access①">camera-access</a> feature enabled. Refer to <a href="https://immersive-web.github.io/webxr/#security">WebXR Device API § security</a> &amp; <a href="https://immersive-web.github.io/webxr/#user-intention">WebXR Device API § user-intention</a> sections for more details, as well as <a href="#user-experience">§ 5.1 User experience</a> &amp; <a href="#privacy-indicators">§ 5.2 Privacy indicators</a> sections below.</p>
+    <p>The requirement that the provided camera images are <a data-link-type="dfn" href="#aligned" id="ref-for-aligned②">aligned</a> with the <code class="idl"><a data-link-type="idl" href="https://www.w3.org/TR/webxr/#xrview-interface" id="ref-for-xrview-interface①②">XRView</a></code>s offers a partial mitigation for impact of the API on users' privacy. A consequence of this requirement is that depending on the <a data-link-type="dfn" href="https://www.w3.org/TR/webxr/#xr-compositor" id="ref-for-xr-compositor">XR Compositor</a>’s <a data-link-type="dfn" href="https://immersive-web.github.io/webxr-ar-module/#blend-technique" id="ref-for-blend-technique">blend technique</a>, the camera image will contain the same information that the user may already be seeing, thus providing direct feedback about which parts of the environment are visible to the website. Note that in some cases it would be possible for the sites to suppress this information (e.g. on smartphones by rendering an opaque object that would encompass the entire view, thus occluding the environment rendered by the compositor).</p>
     <p>In addition to the requirement for the user agents to seek user consent, the application developers are strongly encouraged not to ask for <a data-link-type="dfn" href="#camera-access" id="ref-for-camera-access②">camera-access</a> feature if there are other means of achieving their use cases.</p>
    </section>
    <h3 class="heading settled" data-level="5.1" id="user-experience"><span class="secno">5.1. </span><span class="content">User experience</span><a class="self-link" href="#user-experience"></a></h3>
@@ -873,10 +1023,10 @@ c-[il] { color: #000000 } /* Literal.Number.Integer.Long */
       <p>Displaying a series of permission prompts that would take into consideration various levels of user consent needed in order to create a session with the requested and optional features provided by the application to <code class="idl"><a data-link-type="idl" href="https://immersive-web.github.io/webxr/#dom-xrsystem-requestsession" id="ref-for-dom-xrsystem-requestsession">requestSession()</a></code> call.</p>
     </ol>
     <p>It is the intent of this specification to ensure that the user agent does not encourage app developers to ask for <a data-link-type="dfn" href="#camera-access" id="ref-for-camera-access④">camera-access</a> feature if the experience they want to provide does not absolutely require it. Due to privacy implications of the feature, user agents are allowed to introduce additional friction when a site asks for access to the camera images, with the hopes that this would incentivize the applications to not ask for the feature needlessly.</p>
-    <p>User Agents should consider re-using permissions UI (or permissions granted to the origin already) for the <a data-link-type="dfn" href="https://w3c.github.io/permissions/#dfn-powerful-feature" id="ref-for-dfn-powerful-feature">powerful feature</a> "<a data-link-type="dfn" href="https://www.w3.org/TR/mediacapture-streams/#dfn-camera" id="ref-for-dfn-camera">camera</a>".</p>
+    <p>User Agents should consider re-using permissions UI (or permissions granted to the origin already) for the <a data-link-type="dfn">powerful feature</a> "<a data-link-type="dfn" href="https://www.w3.org/TR/mediacapture-streams/#dfn-camera" id="ref-for-dfn-camera">camera</a>".</p>
    </section>
    <h3 class="heading settled" data-level="5.2" id="privacy-indicators"><span class="secno">5.2. </span><span class="content">Privacy indicators</span><a class="self-link" href="#privacy-indicators"></a></h3>
-   <p>The user agent MUST display a privacy indicator every time an <code class="idl"><a data-link-type="idl" href="https://www.w3.org/TR/webxr/#xrsession-interface" id="ref-for-xrsession-interface①">XRSession</a></code> with <a data-link-type="dfn" href="#camera-access" id="ref-for-camera-access⑤">camera-access</a> has been created and has not yet <a data-link-type="dfn" href="https://www.w3.org/TR/webxr/#ended" id="ref-for-ended">ended</a>. If it ever becomes possible to modify a <a data-link-type="dfn" href="https://www.w3.org/TR/webxr/#set-of-granted-features" id="ref-for-set-of-granted-features①">set of granted features</a> of a session after a session has been created, the indicator SHOULD be displayed for at least as long as the <a data-link-type="dfn" href="#camera-access" id="ref-for-camera-access⑥">camera-access</a> feature descriptor is <a data-link-type="dfn" href="https://infra.spec.whatwg.org/#list-contain" id="ref-for-list-contain①">contained</a> in the <a data-link-type="dfn" href="https://www.w3.org/TR/webxr/#set-of-granted-features" id="ref-for-set-of-granted-features②">set of granted features</a> of the session.</p>
+   <p>The user agent MUST display a privacy indicator every time an <code class="idl"><a data-link-type="idl" href="https://www.w3.org/TR/webxr/#xrsession-interface" id="ref-for-xrsession-interface①">XRSession</a></code> with <a data-link-type="dfn" href="#camera-access" id="ref-for-camera-access⑤">camera-access</a> has been created and has not yet <a data-link-type="dfn">ended</a>. If it ever becomes possible to modify a <a data-link-type="dfn" href="https://www.w3.org/TR/webxr/#set-of-granted-features" id="ref-for-set-of-granted-features①">set of granted features</a> of a session after a session has been created, the indicator SHOULD be displayed for at least as long as the <a data-link-type="dfn" href="#camera-access" id="ref-for-camera-access⑥">camera-access</a> feature descriptor is <a data-link-type="dfn" href="https://infra.spec.whatwg.org/#list-contain" id="ref-for-list-contain①">contained</a> in the <a data-link-type="dfn" href="https://www.w3.org/TR/webxr/#set-of-granted-features" id="ref-for-set-of-granted-features②">set of granted features</a> of the session.</p>
    <section class="non-normative-remainder">
     <p>The indicator displayed to the user should communicate the fact that the device’s camera is in-use and the site has access to it, and thus they should take extra care to ensure that the content that falls within the field of view of the camera is something they are comfortable sharing with the site. This is especially true in a public setting, where bystanders that did not consent to being recorded may be present.</p>
     <p>The example indicators consist of (but are not limited to):</p>
@@ -906,7 +1056,7 @@ c-[il] { color: #000000 } /* Literal.Number.Integer.Long */
     However, for readability,
     these words do not appear in all uppercase letters in this specification. </p>
    <p>All of the text of this specification is normative
-    except sections explicitly marked as non-normative, examples, and notes. <a data-link-type="biblio" href="#biblio-rfc2119">[RFC2119]</a> </p>
+    except sections explicitly marked as non-normative, examples, and notes. <a data-link-type="biblio" href="#biblio-rfc2119" title="Key words for use in RFCs to Indicate Requirement Levels">[RFC2119]</a> </p>
    <p>Examples in this specification are introduced with the words “for example”
     or are set apart from the normative text
     with <code>class="example"</code>,
@@ -920,22 +1070,8 @@ c-[il] { color: #000000 } /* Literal.Number.Integer.Long */
     with <code>class="note"</code>,
     like this: </p>
    <p class="note" role="note">Note, this is an informative note.</p>
-   <h3 class="no-ref no-num heading settled" id="w3c-conformant-algorithms"><span class="content">Conformant Algorithms</span><a class="self-link" href="#w3c-conformant-algorithms"></a></h3>
-   <p>Requirements phrased in the imperative as part of algorithms
-    (such as "strip any leading space characters"
-    or "return false and abort these steps")
-    are to be interpreted with the meaning of the key word
-    ("must", "should", "may", etc)
-    used in introducing the algorithm. </p>
-   <p>Conformance requirements phrased as algorithms or specific steps
-    can be implemented in any manner,
-    so long as the end result is equivalent.
-    In particular, the algorithms defined in this specification
-    are intended to be easy to understand
-    and are not intended to be performant.
-    Implementers are encouraged to optimize. </p>
   </div>
-<script src="https://www.w3.org/scripts/TR/2021/fixup.js"></script>
+  <script src="https://www.w3.org/scripts/TR/2021/fixup.js"></script>
   <h2 class="no-num no-ref heading settled" id="index"><span class="content">Index</span><a class="self-link" href="#index"></a></h2>
   <h3 class="no-num no-ref heading settled" id="index-defined-here"><span class="content">Terms defined by this specification</span><a class="self-link" href="#index-defined-here"></a></h3>
   <ul class="index">
@@ -953,280 +1089,69 @@ c-[il] { color: #000000 } /* Literal.Number.Integer.Long */
    <li><a href="#dom-xrcamera-width">width</a><span>, in § 3.2</span>
    <li><a href="#xrcamera">XRCamera</a><span>, in § 3.2</span>
   </ul>
-  <aside class="dfn-panel" data-for="term-for-list-contain">
-   <a href="https://infra.spec.whatwg.org/#list-contain">https://infra.spec.whatwg.org/#list-contain</a><b>Referenced in:</b>
-   <ul>
-    <li><a href="#ref-for-list-contain">3.1. XRView</a>
-    <li><a href="#ref-for-list-contain①">5.2. Privacy indicators</a>
-   </ul>
-  </aside>
-  <aside class="dfn-panel" data-for="term-for-dfn-camera">
-   <a href="https://www.w3.org/TR/mediacapture-streams/#dfn-camera">https://www.w3.org/TR/mediacapture-streams/#dfn-camera</a><b>Referenced in:</b>
-   <ul>
-    <li><a href="#ref-for-dfn-camera">5.1. User experience</a>
-   </ul>
-  </aside>
-  <aside class="dfn-panel" data-for="term-for-dfn-powerful-feature">
-   <a href="https://w3c.github.io/permissions/#dfn-powerful-feature">https://w3c.github.io/permissions/#dfn-powerful-feature</a><b>Referenced in:</b>
-   <ul>
-    <li><a href="#ref-for-dfn-powerful-feature">5.1. User experience</a>
-   </ul>
-  </aside>
-  <aside class="dfn-panel" data-for="term-for-5.9">
-   <a href="https://www.khronos.org/registry/webgl/specs/latest/1.0/#5.9">https://www.khronos.org/registry/webgl/specs/latest/1.0/#5.9</a><b>Referenced in:</b>
-   <ul>
-    <li><a href="#ref-for-5.9">3.3. XRWebGLBinding</a> <a href="#ref-for-5.9①">(2)</a> <a href="#ref-for-5.9②">(3)</a> <a href="#ref-for-5.9③">(4)</a> <a href="#ref-for-5.9④">(5)</a> <a href="#ref-for-5.9⑤">(6)</a> <a href="#ref-for-5.9⑥">(7)</a>
-   </ul>
-  </aside>
-  <aside class="dfn-panel" data-for="term-for-Exposed">
-   <a href="https://webidl.spec.whatwg.org/#Exposed">https://webidl.spec.whatwg.org/#Exposed</a><b>Referenced in:</b>
-   <ul>
-    <li><a href="#ref-for-Exposed">3.2. XRCamera</a>
-   </ul>
-  </aside>
-  <aside class="dfn-panel" data-for="term-for-invalidstateerror">
-   <a href="https://webidl.spec.whatwg.org/#invalidstateerror">https://webidl.spec.whatwg.org/#invalidstateerror</a><b>Referenced in:</b>
-   <ul>
-    <li><a href="#ref-for-invalidstateerror">3.1. XRView</a> <a href="#ref-for-invalidstateerror①">(2)</a>
-    <li><a href="#ref-for-invalidstateerror②">3.3. XRWebGLBinding</a> <a href="#ref-for-invalidstateerror③">(2)</a> <a href="#ref-for-invalidstateerror④">(3)</a>
-   </ul>
-  </aside>
-  <aside class="dfn-panel" data-for="term-for-SameObject">
-   <a href="https://webidl.spec.whatwg.org/#SameObject">https://webidl.spec.whatwg.org/#SameObject</a><b>Referenced in:</b>
-   <ul>
-    <li><a href="#ref-for-SameObject">3.1. XRView</a>
-   </ul>
-  </aside>
-  <aside class="dfn-panel" data-for="term-for-SecureContext">
-   <a href="https://webidl.spec.whatwg.org/#SecureContext">https://webidl.spec.whatwg.org/#SecureContext</a><b>Referenced in:</b>
-   <ul>
-    <li><a href="#ref-for-SecureContext">3.2. XRCamera</a>
-   </ul>
-  </aside>
-  <aside class="dfn-panel" data-for="term-for-dfn-throw">
-   <a href="https://webidl.spec.whatwg.org/#dfn-throw">https://webidl.spec.whatwg.org/#dfn-throw</a><b>Referenced in:</b>
-   <ul>
-    <li><a href="#ref-for-dfn-throw">3.1. XRView</a> <a href="#ref-for-dfn-throw①">(2)</a>
-    <li><a href="#ref-for-dfn-throw②">3.3. XRWebGLBinding</a> <a href="#ref-for-dfn-throw③">(2)</a> <a href="#ref-for-dfn-throw④">(3)</a>
-   </ul>
-  </aside>
-  <aside class="dfn-panel" data-for="term-for-idl-unsigned-long">
-   <a href="https://webidl.spec.whatwg.org/#idl-unsigned-long">https://webidl.spec.whatwg.org/#idl-unsigned-long</a><b>Referenced in:</b>
-   <ul>
-    <li><a href="#ref-for-idl-unsigned-long">3.2. XRCamera</a> <a href="#ref-for-idl-unsigned-long①">(2)</a>
-   </ul>
-  </aside>
-  <aside class="dfn-panel" data-for="term-for-dom-xrsystem-requestsession">
-   <a href="https://immersive-web.github.io/webxr/#dom-xrsystem-requestsession">https://immersive-web.github.io/webxr/#dom-xrsystem-requestsession</a><b>Referenced in:</b>
-   <ul>
-    <li><a href="#ref-for-dom-xrsystem-requestsession">5.1. User experience</a>
-   </ul>
-  </aside>
-  <aside class="dfn-panel" data-for="term-for-blend-technique">
-   <a href="https://immersive-web.github.io/webxr-ar-module/#blend-technique">https://immersive-web.github.io/webxr-ar-module/#blend-technique</a><b>Referenced in:</b>
-   <ul>
-    <li><a href="#ref-for-blend-technique">5. Privacy &amp; Security Considerations</a>
-   </ul>
-  </aside>
-  <aside class="dfn-panel" data-for="term-for-xrframe-interface">
-   <a href="https://www.w3.org/TR/webxr/#xrframe-interface">https://www.w3.org/TR/webxr/#xrframe-interface</a><b>Referenced in:</b>
-   <ul>
-    <li><a href="#ref-for-xrframe-interface">3.3. XRWebGLBinding</a>
-   </ul>
-  </aside>
-  <aside class="dfn-panel" data-for="term-for-xrsession-interface">
-   <a href="https://www.w3.org/TR/webxr/#xrsession-interface">https://www.w3.org/TR/webxr/#xrsession-interface</a><b>Referenced in:</b>
-   <ul>
-    <li><a href="#ref-for-xrsession-interface">2.1. Feature descriptor</a>
-    <li><a href="#ref-for-xrsession-interface①">5.2. Privacy indicators</a>
-   </ul>
-  </aside>
-  <aside class="dfn-panel" data-for="term-for-xrview-interface">
-   <a href="https://www.w3.org/TR/webxr/#xrview-interface">https://www.w3.org/TR/webxr/#xrview-interface</a><b>Referenced in:</b>
-   <ul>
-    <li><a href="#ref-for-xrview-interface">3.1. XRView</a> <a href="#ref-for-xrview-interface①">(2)</a> <a href="#ref-for-xrview-interface②">(3)</a> <a href="#ref-for-xrview-interface③">(4)</a> <a href="#ref-for-xrview-interface④">(5)</a>
-    <li><a href="#ref-for-xrview-interface⑤">3.2. XRCamera</a> <a href="#ref-for-xrview-interface⑥">(2)</a>
-    <li><a href="#ref-for-xrview-interface⑦">4.1. Native camera</a> <a href="#ref-for-xrview-interface⑧">(2)</a> <a href="#ref-for-xrview-interface⑨">(3)</a> <a href="#ref-for-xrview-interface①⓪">(4)</a> <a href="#ref-for-xrview-interface①①">(5)</a>
-    <li><a href="#ref-for-xrview-interface①②">5. Privacy &amp; Security Considerations</a>
-   </ul>
-  </aside>
-  <aside class="dfn-panel" data-for="term-for-xrframe-active">
-   <a href="https://www.w3.org/TR/webxr/#xrframe-active">https://www.w3.org/TR/webxr/#xrframe-active</a><b>Referenced in:</b>
-   <ul>
-    <li><a href="#ref-for-xrframe-active">3.1. XRView</a>
-    <li><a href="#ref-for-xrframe-active①">3.3. XRWebGLBinding</a>
-   </ul>
-  </aside>
-  <aside class="dfn-panel" data-for="term-for-xrframe-animationframe">
-   <a href="https://www.w3.org/TR/webxr/#xrframe-animationframe">https://www.w3.org/TR/webxr/#xrframe-animationframe</a><b>Referenced in:</b>
-   <ul>
-    <li><a href="#ref-for-xrframe-animationframe">3.1. XRView</a>
-    <li><a href="#ref-for-xrframe-animationframe①">3.3. XRWebGLBinding</a>
-   </ul>
-  </aside>
-  <aside class="dfn-panel" data-for="term-for-capable-of-supporting">
-   <a href="https://www.w3.org/TR/webxr/#capable-of-supporting">https://www.w3.org/TR/webxr/#capable-of-supporting</a><b>Referenced in:</b>
-   <ul>
-    <li><a href="#ref-for-capable-of-supporting">2.1. Feature descriptor</a> <a href="#ref-for-capable-of-supporting①">(2)</a>
-   </ul>
-  </aside>
-  <aside class="dfn-panel" data-for="term-for-ended">
-   <a href="https://www.w3.org/TR/webxr/#ended">https://www.w3.org/TR/webxr/#ended</a><b>Referenced in:</b>
-   <ul>
-    <li><a href="#ref-for-ended">5.2. Privacy indicators</a>
-   </ul>
-  </aside>
-  <aside class="dfn-panel" data-for="term-for-feature-descriptor">
-   <a href="https://www.w3.org/TR/webxr/#feature-descriptor">https://www.w3.org/TR/webxr/#feature-descriptor</a><b>Referenced in:</b>
-   <ul>
-    <li><a href="#ref-for-feature-descriptor">2.1. Feature descriptor</a>
-   </ul>
-  </aside>
-  <aside class="dfn-panel" data-for="term-for-xrview-frame">
-   <a href="https://www.w3.org/TR/webxr/#xrview-frame">https://www.w3.org/TR/webxr/#xrview-frame</a><b>Referenced in:</b>
-   <ul>
-    <li><a href="#ref-for-xrview-frame">3.1. XRView</a>
-    <li><a href="#ref-for-xrview-frame①">3.3. XRWebGLBinding</a>
-   </ul>
-  </aside>
-  <aside class="dfn-panel" data-for="term-for-inline-xr-device">
-   <a href="https://www.w3.org/TR/webxr/#inline-xr-device">https://www.w3.org/TR/webxr/#inline-xr-device</a><b>Referenced in:</b>
-   <ul>
-    <li><a href="#ref-for-inline-xr-device">2.1. Feature descriptor</a>
-   </ul>
-  </aside>
-  <aside class="dfn-panel" data-for="term-for-permissions-policy">
-   <a href="https://www.w3.org/TR/webxr/#permissions-policy">https://www.w3.org/TR/webxr/#permissions-policy</a><b>Referenced in:</b>
-   <ul>
-    <li><a href="#ref-for-permissions-policy">2.1. Feature descriptor</a> <a href="#ref-for-permissions-policy①">(2)</a>
-   </ul>
-  </aside>
-  <aside class="dfn-panel" data-for="term-for-requestanimationframe">
-   <a href="https://www.w3.org/TR/webxr/#requestanimationframe">https://www.w3.org/TR/webxr/#requestanimationframe</a><b>Referenced in:</b>
-   <ul>
-    <li><a href="#ref-for-requestanimationframe">3.3. XRWebGLBinding</a>
-   </ul>
-  </aside>
-  <aside class="dfn-panel" data-for="term-for-xrview-session">
-   <a href="https://www.w3.org/TR/webxr/#xrview-session">https://www.w3.org/TR/webxr/#xrview-session</a><b>Referenced in:</b>
-   <ul>
-    <li><a href="#ref-for-xrview-session">3.1. XRView</a>
-    <li><a href="#ref-for-xrview-session①">3.3. XRWebGLBinding</a>
-   </ul>
-  </aside>
-  <aside class="dfn-panel" data-for="term-for-set-of-granted-features">
-   <a href="https://www.w3.org/TR/webxr/#set-of-granted-features">https://www.w3.org/TR/webxr/#set-of-granted-features</a><b>Referenced in:</b>
-   <ul>
-    <li><a href="#ref-for-set-of-granted-features">3.1. XRView</a>
-    <li><a href="#ref-for-set-of-granted-features①">5.2. Privacy indicators</a> <a href="#ref-for-set-of-granted-features②">(2)</a>
-   </ul>
-  </aside>
-  <aside class="dfn-panel" data-for="term-for-xrframe-time">
-   <a href="https://www.w3.org/TR/webxr/#xrframe-time">https://www.w3.org/TR/webxr/#xrframe-time</a><b>Referenced in:</b>
-   <ul>
-    <li><a href="#ref-for-xrframe-time">3.1. XRView</a>
-   </ul>
-  </aside>
-  <aside class="dfn-panel" data-for="term-for-xr-compositor">
-   <a href="https://www.w3.org/TR/webxr/#xr-compositor">https://www.w3.org/TR/webxr/#xr-compositor</a><b>Referenced in:</b>
-   <ul>
-    <li><a href="#ref-for-xr-compositor">5. Privacy &amp; Security Considerations</a>
-   </ul>
-  </aside>
-  <aside class="dfn-panel" data-for="term-for-XRWebGLBindingtype">
-   <a href="https://immersive-web.github.io/layers/#XRWebGLBindingtype">https://immersive-web.github.io/layers/#XRWebGLBindingtype</a><b>Referenced in:</b>
-   <ul>
-    <li><a href="#ref-for-XRWebGLBindingtype">3.2. XRCamera</a>
-    <li><a href="#ref-for-XRWebGLBindingtype①">3.3. XRWebGLBinding</a> <a href="#ref-for-XRWebGLBindingtype②">(2)</a> <a href="#ref-for-XRWebGLBindingtype③">(3)</a> <a href="#ref-for-XRWebGLBindingtype④">(4)</a>
-   </ul>
-  </aside>
-  <aside class="dfn-panel" data-for="term-for-xrwebglbinding-context">
-   <a href="https://immersive-web.github.io/layers/#xrwebglbinding-context">https://immersive-web.github.io/layers/#xrwebglbinding-context</a><b>Referenced in:</b>
-   <ul>
-    <li><a href="#ref-for-xrwebglbinding-context">3.3. XRWebGLBinding</a>
-   </ul>
-  </aside>
-  <aside class="dfn-panel" data-for="term-for-opaque-texture">
-   <a href="https://immersive-web.github.io/layers/#opaque-texture">https://immersive-web.github.io/layers/#opaque-texture</a><b>Referenced in:</b>
-   <ul>
-    <li><a href="#ref-for-opaque-texture">3.3. XRWebGLBinding</a> <a href="#ref-for-opaque-texture①">(2)</a> <a href="#ref-for-opaque-texture②">(3)</a>
-   </ul>
-  </aside>
-  <aside class="dfn-panel" data-for="term-for-xrwebglbinding-session">
-   <a href="https://immersive-web.github.io/layers/#xrwebglbinding-session">https://immersive-web.github.io/layers/#xrwebglbinding-session</a><b>Referenced in:</b>
-   <ul>
-    <li><a href="#ref-for-xrwebglbinding-session">3.3. XRWebGLBinding</a>
-   </ul>
-  </aside>
   <h3 class="no-num no-ref heading settled" id="index-defined-elsewhere"><span class="content">Terms defined by reference</span><a class="self-link" href="#index-defined-elsewhere"></a></h3>
   <ul class="index">
    <li>
     <a data-link-type="biblio">[INFRA]</a> defines the following terms:
     <ul>
-     <li><span class="dfn-paneled" id="term-for-list-contain">contain</span>
+     <li><span class="dfn-paneled" id="ae8def21">contain</span>
     </ul>
    <li>
     <a data-link-type="biblio">[MEDIA CAPTURE AND STREAMS]</a> defines the following terms:
     <ul>
-     <li><span class="dfn-paneled" id="term-for-dfn-camera">camera</span>
-    </ul>
-   <li>
-    <a data-link-type="biblio">[PERMISSIONS]</a> defines the following terms:
-    <ul>
-     <li><span class="dfn-paneled" id="term-for-dfn-powerful-feature">powerful feature</span>
+     <li><span class="dfn-paneled" id="b44fc51d">camera</span>
     </ul>
    <li>
     <a data-link-type="biblio">[WEBGL-2]</a> defines the following terms:
     <ul>
-     <li><span class="dfn-paneled" id="term-for-5.9">WebGLTexture</span>
+     <li><span class="dfn-paneled" id="4f18bcd8">WebGLTexture</span>
     </ul>
    <li>
     <a data-link-type="biblio">[WEBIDL]</a> defines the following terms:
     <ul>
-     <li><span class="dfn-paneled" id="term-for-Exposed">Exposed</span>
-     <li><span class="dfn-paneled" id="term-for-invalidstateerror">InvalidStateError</span>
-     <li><span class="dfn-paneled" id="term-for-SameObject">SameObject</span>
-     <li><span class="dfn-paneled" id="term-for-SecureContext">SecureContext</span>
-     <li><span class="dfn-paneled" id="term-for-dfn-throw">throw</span>
-     <li><span class="dfn-paneled" id="term-for-idl-unsigned-long">unsigned long</span>
+     <li><span class="dfn-paneled" id="889e932f">Exposed</span>
+     <li><span class="dfn-paneled" id="797018a7">InvalidStateError</span>
+     <li><span class="dfn-paneled" id="a5c91173">SameObject</span>
+     <li><span class="dfn-paneled" id="b75bb3bd">SecureContext</span>
+     <li><span class="dfn-paneled" id="b4cfa5ce">throw</span>
+     <li><span class="dfn-paneled" id="e97a9688">unsigned long</span>
     </ul>
    <li>
     <a data-link-type="biblio">[WEBXR]</a> defines the following terms:
     <ul>
-     <li><span class="dfn-paneled" id="term-for-dom-xrsystem-requestsession">requestSession(mode)</span>
+     <li><span class="dfn-paneled" id="dc9c48d6">requestSession(mode)</span>
     </ul>
    <li>
     <a data-link-type="biblio">[WEBXR AUGMENTED REALITY MODULE]</a> defines the following terms:
     <ul>
-     <li><span class="dfn-paneled" id="term-for-blend-technique">blend technique</span>
+     <li><span class="dfn-paneled" id="4a9bf0c5">blend technique</span>
     </ul>
    <li>
     <a data-link-type="biblio">[WEBXR DEVICE API - LEVEL 1]</a> defines the following terms:
     <ul>
-     <li><span class="dfn-paneled" id="term-for-xrframe-interface">XRFrame</span>
-     <li><span class="dfn-paneled" id="term-for-xrsession-interface">XRSession</span>
-     <li><span class="dfn-paneled" id="term-for-xrview-interface">XRView</span>
-     <li><span class="dfn-paneled" id="term-for-xrframe-active">active</span>
-     <li><span class="dfn-paneled" id="term-for-xrframe-animationframe">animationframe</span>
-     <li><span class="dfn-paneled" id="term-for-capable-of-supporting">capable of supporting</span>
-     <li><span class="dfn-paneled" id="term-for-ended">ended</span>
-     <li><span class="dfn-paneled" id="term-for-feature-descriptor">feature descriptor</span>
-     <li><span class="dfn-paneled" id="term-for-xrview-frame">frame</span>
-     <li><span class="dfn-paneled" id="term-for-inline-xr-device">inline xr device</span>
-     <li><span class="dfn-paneled" id="term-for-permissions-policy">permissions policy</span>
-     <li><span class="dfn-paneled" id="term-for-requestanimationframe">requestanimationframe()</span>
-     <li><span class="dfn-paneled" id="term-for-xrview-session">session</span>
-     <li><span class="dfn-paneled" id="term-for-set-of-granted-features">set of granted features</span>
-     <li><span class="dfn-paneled" id="term-for-xrframe-time">time</span>
-     <li><span class="dfn-paneled" id="term-for-xr-compositor">xr compositor</span>
+     <li><span class="dfn-paneled" id="cbf14c82">XRFrame</span>
+     <li><span class="dfn-paneled" id="92c48225">XRSession</span>
+     <li><span class="dfn-paneled" id="b075ce09">XRView</span>
+     <li><span class="dfn-paneled" id="9db6ca78">active</span>
+     <li><span class="dfn-paneled" id="25c57a7c">animationFrame</span>
+     <li><span class="dfn-paneled" id="00413661">capable of supporting</span>
+     <li><span class="dfn-paneled" id="6779156f">feature descriptor</span>
+     <li><span class="dfn-paneled" id="b12ee965">frame</span>
+     <li><span class="dfn-paneled" id="e76130a4">inline XR device</span>
+     <li><span class="dfn-paneled" id="5f9d262b">permissions policy</span>
+     <li><span class="dfn-paneled" id="5cf83f25">requestAnimationFrame()</span>
+     <li><span class="dfn-paneled" id="7e6cb546">session</span>
+     <li><span class="dfn-paneled" id="87fe1306">set of granted features</span>
+     <li><span class="dfn-paneled" id="a1afb5ed">time</span>
+     <li><span class="dfn-paneled" id="d0d9db47">XR Compositor</span>
     </ul>
    <li>
     <a data-link-type="biblio">[WEBXR LAYERS]</a> defines the following terms:
     <ul>
-     <li><span class="dfn-paneled" id="term-for-XRWebGLBindingtype">XRWebGLBinding</span>
-     <li><span class="dfn-paneled" id="term-for-xrwebglbinding-context">context</span>
-     <li><span class="dfn-paneled" id="term-for-opaque-texture">opaque texture</span>
-     <li><span class="dfn-paneled" id="term-for-xrwebglbinding-session">session</span>
+     <li><span class="dfn-paneled" id="1fe9bb6f">XRWebGLBinding</span>
+     <li><span class="dfn-paneled" id="3c7fe8e0">context</span>
+     <li><span class="dfn-paneled" id="cf7decf1">opaque texture</span>
+     <li><span class="dfn-paneled" id="c9b54a49">session</span>
     </ul>
   </ul>
   <h2 class="no-num no-ref heading settled" id="references"><span class="content">References</span><a class="self-link" href="#references"></a></h2>
@@ -1243,12 +1168,8 @@ c-[il] { color: #000000 } /* Literal.Number.Integer.Long */
   </dl>
   <h3 class="no-num no-ref heading settled" id="informative"><span class="content">Informative References</span><a class="self-link" href="#informative"></a></h3>
   <dl>
-   <dt id="biblio-permissions">[PERMISSIONS]
-   <dd>Marcos Caceres; Mike Taylor. <a href="https://w3c.github.io/permissions/"><cite>Permissions</cite></a>. URL: <a href="https://w3c.github.io/permissions/">https://w3c.github.io/permissions/</a>
    <dt id="biblio-webxr">[WEBXR]
    <dd>Brandon Jones; Manish Goregaokar; Rik Cabanier. <a href="https://immersive-web.github.io/webxr/"><cite>WebXR Device API</cite></a>. URL: <a href="https://immersive-web.github.io/webxr/">https://immersive-web.github.io/webxr/</a>
-   <dt id="biblio-webxr-1">[WEBXR-1]
-   <dd>WebXR Device API Level 1 URL: <a href="https://www.w3.org/TR/webxr/">https://www.w3.org/TR/webxr/</a>
   </dl>
   <h2 class="no-num no-ref heading settled" id="idl-index"><span class="content">IDL Index</span><a class="self-link" href="#idl-index"></a></h2>
 <pre class="idl highlight def"><c- b>partial</c-> <c- b>interface</c-> <a class="idl-code" data-link-type="interface" href="https://www.w3.org/TR/webxr/#xrview-interface"><c- g>XRView</c-></a> {
@@ -1270,232 +1191,968 @@ c-[il] { color: #000000 } /* Literal.Number.Integer.Long */
   <div style="counter-reset:issue">
    <div class="issue"> Should we specify more information about the returned <code class="idl"><a data-link-type="idl" href="https://www.khronos.org/registry/webgl/specs/latest/1.0/#5.9">WebGLTexture</a></code>? E.g.: is color-renderable, what is the texture format, etc. <a class="issue-return" href="#issue-63423cac" title="Jump to section">↵</a></div>
   </div>
-  <aside class="dfn-panel" data-for="camera-access">
-   <b><a href="#camera-access">#camera-access</a></b><b>Referenced in:</b>
-   <ul>
-    <li><a href="#ref-for-camera-access">3.1. XRView</a>
-    <li><a href="#ref-for-camera-access①">5. Privacy &amp; Security Considerations</a> <a href="#ref-for-camera-access②">(2)</a>
-    <li><a href="#ref-for-camera-access③">5.1. User experience</a> <a href="#ref-for-camera-access④">(2)</a>
-    <li><a href="#ref-for-camera-access⑤">5.2. Privacy indicators</a> <a href="#ref-for-camera-access⑥">(2)</a>
-   </ul>
-  </aside>
-  <aside class="dfn-panel" data-for="dom-xrview-camera">
-   <b><a href="#dom-xrview-camera">#dom-xrview-camera</a></b><b>Referenced in:</b>
-   <ul>
-    <li><a href="#ref-for-dom-xrview-camera">3.1. XRView</a> <a href="#ref-for-dom-xrview-camera①">(2)</a>
-   </ul>
-  </aside>
-  <aside class="dfn-panel" data-for="obtain-camera">
-   <b><a href="#obtain-camera">#obtain-camera</a></b><b>Referenced in:</b>
-   <ul>
-    <li><a href="#ref-for-obtain-camera">3.1. XRView</a>
-   </ul>
-  </aside>
-  <aside class="dfn-panel" data-for="xrcamera">
-   <b><a href="#xrcamera">#xrcamera</a></b><b>Referenced in:</b>
-   <ul>
-    <li><a href="#ref-for-xrcamera">3.1. XRView</a> <a href="#ref-for-xrcamera①">(2)</a> <a href="#ref-for-xrcamera②">(3)</a>
-    <li><a href="#ref-for-xrcamera③">3.2. XRCamera</a> <a href="#ref-for-xrcamera④">(2)</a> <a href="#ref-for-xrcamera⑤">(3)</a> <a href="#ref-for-xrcamera⑥">(4)</a> <a href="#ref-for-xrcamera⑦">(5)</a> <a href="#ref-for-xrcamera⑧">(6)</a> <a href="#ref-for-xrcamera⑨">(7)</a>
-    <li><a href="#ref-for-xrcamera①⓪">3.3. XRWebGLBinding</a> <a href="#ref-for-xrcamera①①">(2)</a> <a href="#ref-for-xrcamera①②">(3)</a>
-   </ul>
-  </aside>
-  <aside class="dfn-panel" data-for="dom-xrcamera-width">
-   <b><a href="#dom-xrcamera-width">#dom-xrcamera-width</a></b><b>Referenced in:</b>
-   <ul>
-    <li><a href="#ref-for-dom-xrcamera-width">3.2. XRCamera</a> <a href="#ref-for-dom-xrcamera-width①">(2)</a>
-   </ul>
-  </aside>
-  <aside class="dfn-panel" data-for="dom-xrcamera-height">
-   <b><a href="#dom-xrcamera-height">#dom-xrcamera-height</a></b><b>Referenced in:</b>
-   <ul>
-    <li><a href="#ref-for-dom-xrcamera-height">3.2. XRCamera</a> <a href="#ref-for-dom-xrcamera-height①">(2)</a>
-   </ul>
-  </aside>
-  <aside class="dfn-panel" data-for="xrcamera-view">
-   <b><a href="#xrcamera-view">#xrcamera-view</a></b><b>Referenced in:</b>
-   <ul>
-    <li><a href="#ref-for-xrcamera-view">3.2. XRCamera</a>
-    <li><a href="#ref-for-xrcamera-view①">3.3. XRWebGLBinding</a>
-   </ul>
-  </aside>
-  <aside class="dfn-panel" data-for="xrcamera-camera-image">
-   <b><a href="#xrcamera-camera-image">#xrcamera-camera-image</a></b><b>Referenced in:</b>
-   <ul>
-    <li><a href="#ref-for-xrcamera-camera-image">3.2. XRCamera</a> <a href="#ref-for-xrcamera-camera-image①">(2)</a> <a href="#ref-for-xrcamera-camera-image②">(3)</a>
-    <li><a href="#ref-for-xrcamera-camera-image③">3.3. XRWebGLBinding</a>
-   </ul>
-  </aside>
-  <aside class="dfn-panel" data-for="create-camera-instance">
-   <b><a href="#create-camera-instance">#create-camera-instance</a></b><b>Referenced in:</b>
-   <ul>
-    <li><a href="#ref-for-create-camera-instance">3.1. XRView</a>
-   </ul>
-  </aside>
-  <aside class="dfn-panel" data-for="dom-xrwebglbinding-getcameraimage">
-   <b><a href="#dom-xrwebglbinding-getcameraimage">#dom-xrwebglbinding-getcameraimage</a></b><b>Referenced in:</b>
-   <ul>
-    <li><a href="#ref-for-dom-xrwebglbinding-getcameraimage">3.3. XRWebGLBinding</a> <a href="#ref-for-dom-xrwebglbinding-getcameraimage①">(2)</a> <a href="#ref-for-dom-xrwebglbinding-getcameraimage②">(3)</a>
-   </ul>
-  </aside>
-  <aside class="dfn-panel" data-for="obtain-camera-image">
-   <b><a href="#obtain-camera-image">#obtain-camera-image</a></b><b>Referenced in:</b>
-   <ul>
-    <li><a href="#ref-for-obtain-camera-image">3.3. XRWebGLBinding</a> <a href="#ref-for-obtain-camera-image①">(2)</a>
-   </ul>
-  </aside>
-  <aside class="dfn-panel" data-for="native-camera">
-   <b><a href="#native-camera">#native-camera</a></b><b>Referenced in:</b>
-   <ul>
-    <li><a href="#ref-for-native-camera">2.1. Feature descriptor</a>
-    <li><a href="#ref-for-native-camera①">3.1. XRView</a>
-    <li><a href="#ref-for-native-camera②">4.1. Native camera</a>
-   </ul>
-  </aside>
-  <aside class="dfn-panel" data-for="aligned">
-   <b><a href="#aligned">#aligned</a></b><b>Referenced in:</b>
-   <ul>
-    <li><a href="#ref-for-aligned">3.1. XRView</a>
-    <li><a href="#ref-for-aligned①">4.1. Native camera</a>
-    <li><a href="#ref-for-aligned②">5. Privacy &amp; Security Considerations</a>
-   </ul>
-  </aside>
-<script>/* script-dfn-panel */
+<script>/* Boilerplate: script-dom-helper */
+"use strict";
+function query(sel) { return document.querySelector(sel); }
 
-document.body.addEventListener("click", function(e) {
-    var queryAll = function(sel) { return [].slice.call(document.querySelectorAll(sel)); }
-    // Find the dfn element or panel, if any, that was clicked on.
-    var el = e.target;
-    var target;
-    var hitALink = false;
-    while(el.parentElement) {
-        if(el.tagName == "A") {
-            // Clicking on a link in a <dfn> shouldn't summon the panel
-            hitALink = true;
-        }
-        if(el.classList.contains("dfn-paneled")) {
-            target = "dfn";
-            break;
-        }
-        if(el.classList.contains("dfn-panel")) {
-            target = "dfn-panel";
-            break;
-        }
-        el = el.parentElement;
-    }
-    if(target != "dfn-panel") {
-        // Turn off any currently "on" or "activated" panels.
-        queryAll(".dfn-panel.on, .dfn-panel.activated").forEach(function(el){
-            el.classList.remove("on");
-            el.classList.remove("activated");
-        });
-    }
-    if(target == "dfn" && !hitALink) {
-        // open the panel
-        var dfnPanel = document.querySelector(".dfn-panel[data-for='" + el.id + "']");
-        if(dfnPanel) {
-            dfnPanel.classList.add("on");
-            var rect = el.getBoundingClientRect();
-            dfnPanel.style.left = window.scrollX + rect.right + 5 + "px";
-            dfnPanel.style.top = window.scrollY + rect.top + "px";
-            var panelRect = dfnPanel.getBoundingClientRect();
-            var panelWidth = panelRect.right - panelRect.left;
-            if(panelRect.right > document.body.scrollWidth && (rect.left - (panelWidth + 5)) > 0) {
-                // Reposition, because the panel is overflowing
-                dfnPanel.style.left = window.scrollX + rect.left - (panelWidth + 5) + "px";
-            }
-        } else {
-            console.log("Couldn't find .dfn-panel[data-for='" + el.id + "']");
-        }
-    } else if(target == "dfn-panel") {
-        // Switch it to "activated" state, which pins it.
-        el.classList.add("activated");
-        el.style.left = null;
-        el.style.top = null;
-    }
+function queryAll(sel) { return [...document.querySelectorAll(sel)]; }
 
+function iter(obj) {
+	if(!obj) return [];
+	var it = obj[Symbol.iterator];
+	if(it) return it;
+	return Object.entries(obj);
+}
+
+function mk(tagname, attrs, ...children) {
+	const el = document.createElement(tagname);
+	for(const [k,v] of iter(attrs)) {
+		if(k.slice(0,3) == "_on") {
+			const eventName = k.slice(3);
+			el.addEventListener(eventName, v);
+		} else if(k[0] == "_") {
+			// property, not attribute
+			el[k.slice(1)] = v;
+		} else {
+			if(v === false || v == null) {
+        continue;
+      } else if(v === true) {
+        el.setAttribute(k, "");
+        continue;
+      } else {
+  			el.setAttribute(k, v);
+      }
+		}
+	}
+	append(el, children);
+	return el;
+}
+
+/* Create shortcuts for every known HTML element */
+[
+  "a",
+  "abbr",
+  "acronym",
+  "address",
+  "applet",
+  "area",
+  "article",
+  "aside",
+  "audio",
+  "b",
+  "base",
+  "basefont",
+  "bdo",
+  "big",
+  "blockquote",
+  "body",
+  "br",
+  "button",
+  "canvas",
+  "caption",
+  "center",
+  "cite",
+  "code",
+  "col",
+  "colgroup",
+  "datalist",
+  "dd",
+  "del",
+  "details",
+  "dfn",
+  "dialog",
+  "div",
+  "dl",
+  "dt",
+  "em",
+  "embed",
+  "fieldset",
+  "figcaption",
+  "figure",
+  "font",
+  "footer",
+  "form",
+  "frame",
+  "frameset",
+  "head",
+  "header",
+  "h1",
+  "h2",
+  "h3",
+  "h4",
+  "h5",
+  "h6",
+  "hr",
+  "html",
+  "i",
+  "iframe",
+  "img",
+  "input",
+  "ins",
+  "kbd",
+  "label",
+  "legend",
+  "li",
+  "link",
+  "main",
+  "map",
+  "mark",
+  "meta",
+  "meter",
+  "nav",
+  "nobr",
+  "noscript",
+  "object",
+  "ol",
+  "optgroup",
+  "option",
+  "output",
+  "p",
+  "param",
+  "pre",
+  "progress",
+  "q",
+  "s",
+  "samp",
+  "script",
+  "section",
+  "select",
+  "small",
+  "source",
+  "span",
+  "strike",
+  "strong",
+  "style",
+  "sub",
+  "summary",
+  "sup",
+  "table",
+  "tbody",
+  "td",
+  "template",
+  "textarea",
+  "tfoot",
+  "th",
+  "thead",
+  "time",
+  "title",
+  "tr",
+  "u",
+  "ul",
+  "var",
+  "video",
+  "wbr",
+  "xmp",
+].forEach(tagname=>{
+	mk[tagname] = (...args) => mk(tagname, ...args);
 });
-</script>
-<script>/* script-var-click-highlighting */
 
-    document.addEventListener("click", e=>{
-        if(e.target.nodeName == "VAR") {
-            highlightSameAlgoVars(e.target);
+function* nodesFromChildList(children) {
+	for(const child of children.flat(Infinity)) {
+		if(child instanceof Node) {
+			yield child;
+		} else {
+			yield new Text(child);
+		}
+	}
+}
+function append(el, ...children) {
+	for(const child of nodesFromChildList(children)) {
+		if(el instanceof Node) el.appendChild(child);
+		else el.push(child);
+	}
+	return el;
+}
+
+function insertAfter(el, ...children) {
+	for(const child of nodesFromChildList(children)) {
+		el.parentNode.insertBefore(child, el.nextSibling);
+	}
+	return el;
+}
+
+function clearContents(el) {
+	el.innerHTML = "";
+	return el;
+}
+
+function parseHTML(markup) {
+	if(markup.toLowerCase().trim().indexOf('<!doctype') === 0) {
+		const doc = document.implementation.createHTMLDocument("");
+		doc.documentElement.innerHTML = markup;
+		return doc;
+	} else {
+		const el = mk.template({});
+		el.innerHTML = markup;
+		return el.content;
+	}
+}</script>
+<script>/* Boilerplate: script-dfn-panel */
+"use strict";
+{
+let dfnPanelData = {
+"00413661": {"dfnID":"00413661","dfnText":"capable of supporting","external":true,"refSections":[{"refs":[{"id":"ref-for-capable-of-supporting"},{"id":"ref-for-capable-of-supporting\u2460"}],"title":"2.1. Feature descriptor"}],"url":"https://www.w3.org/TR/webxr/#capable-of-supporting"},
+"1fe9bb6f": {"dfnID":"1fe9bb6f","dfnText":"XRWebGLBinding","external":true,"refSections":[{"refs":[{"id":"ref-for-XRWebGLBindingtype"}],"title":"3.2. XRCamera"},{"refs":[{"id":"ref-for-XRWebGLBindingtype\u2460"},{"id":"ref-for-XRWebGLBindingtype\u2461"},{"id":"ref-for-XRWebGLBindingtype\u2462"},{"id":"ref-for-XRWebGLBindingtype\u2463"}],"title":"3.3. XRWebGLBinding"}],"url":"https://immersive-web.github.io/layers/#XRWebGLBindingtype"},
+"25c57a7c": {"dfnID":"25c57a7c","dfnText":"animationFrame","external":true,"refSections":[{"refs":[{"id":"ref-for-xrframe-animationframe"}],"title":"3.1. XRView"},{"refs":[{"id":"ref-for-xrframe-animationframe\u2460"}],"title":"3.3. XRWebGLBinding"}],"url":"https://www.w3.org/TR/webxr/#xrframe-animationframe"},
+"3c7fe8e0": {"dfnID":"3c7fe8e0","dfnText":"context","external":true,"refSections":[{"refs":[{"id":"ref-for-xrwebglbinding-context"}],"title":"3.3. XRWebGLBinding"}],"url":"https://immersive-web.github.io/layers/#xrwebglbinding-context"},
+"4a9bf0c5": {"dfnID":"4a9bf0c5","dfnText":"blend technique","external":true,"refSections":[{"refs":[{"id":"ref-for-blend-technique"}],"title":"5. Privacy & Security Considerations"}],"url":"https://immersive-web.github.io/webxr-ar-module/#blend-technique"},
+"4f18bcd8": {"dfnID":"4f18bcd8","dfnText":"WebGLTexture","external":true,"refSections":[{"refs":[{"id":"ref-for-5.9"},{"id":"ref-for-5.9\u2460"},{"id":"ref-for-5.9\u2461"},{"id":"ref-for-5.9\u2462"},{"id":"ref-for-5.9\u2463"},{"id":"ref-for-5.9\u2464"},{"id":"ref-for-5.9\u2465"}],"title":"3.3. XRWebGLBinding"}],"url":"https://www.khronos.org/registry/webgl/specs/latest/1.0/#5.9"},
+"5cf83f25": {"dfnID":"5cf83f25","dfnText":"requestAnimationFrame()","external":true,"refSections":[{"refs":[{"id":"ref-for-requestanimationframe"}],"title":"3.3. XRWebGLBinding"}],"url":"https://www.w3.org/TR/webxr/#requestanimationframe"},
+"5f9d262b": {"dfnID":"5f9d262b","dfnText":"permissions policy","external":true,"refSections":[{"refs":[{"id":"ref-for-permissions-policy"},{"id":"ref-for-permissions-policy\u2460"}],"title":"2.1. Feature descriptor"}],"url":"https://www.w3.org/TR/webxr/#permissions-policy"},
+"6779156f": {"dfnID":"6779156f","dfnText":"feature descriptor","external":true,"refSections":[{"refs":[{"id":"ref-for-feature-descriptor"}],"title":"2.1. Feature descriptor"}],"url":"https://www.w3.org/TR/webxr/#feature-descriptor"},
+"797018a7": {"dfnID":"797018a7","dfnText":"InvalidStateError","external":true,"refSections":[{"refs":[{"id":"ref-for-invalidstateerror"},{"id":"ref-for-invalidstateerror\u2460"}],"title":"3.1. XRView"},{"refs":[{"id":"ref-for-invalidstateerror\u2461"},{"id":"ref-for-invalidstateerror\u2462"},{"id":"ref-for-invalidstateerror\u2463"}],"title":"3.3. XRWebGLBinding"}],"url":"https://webidl.spec.whatwg.org/#invalidstateerror"},
+"7e6cb546": {"dfnID":"7e6cb546","dfnText":"session","external":true,"refSections":[{"refs":[{"id":"ref-for-xrview-session"}],"title":"3.1. XRView"},{"refs":[{"id":"ref-for-xrview-session\u2460"}],"title":"3.3. XRWebGLBinding"}],"url":"https://www.w3.org/TR/webxr/#xrview-session"},
+"87fe1306": {"dfnID":"87fe1306","dfnText":"set of granted features","external":true,"refSections":[{"refs":[{"id":"ref-for-set-of-granted-features"}],"title":"3.1. XRView"},{"refs":[{"id":"ref-for-set-of-granted-features\u2460"},{"id":"ref-for-set-of-granted-features\u2461"}],"title":"5.2. Privacy indicators"}],"url":"https://www.w3.org/TR/webxr/#set-of-granted-features"},
+"889e932f": {"dfnID":"889e932f","dfnText":"Exposed","external":true,"refSections":[{"refs":[{"id":"ref-for-Exposed"}],"title":"3.2. XRCamera"}],"url":"https://webidl.spec.whatwg.org/#Exposed"},
+"92c48225": {"dfnID":"92c48225","dfnText":"XRSession","external":true,"refSections":[{"refs":[{"id":"ref-for-xrsession-interface"}],"title":"2.1. Feature descriptor"},{"refs":[{"id":"ref-for-xrsession-interface\u2460"}],"title":"5.2. Privacy indicators"}],"url":"https://www.w3.org/TR/webxr/#xrsession-interface"},
+"9db6ca78": {"dfnID":"9db6ca78","dfnText":"active","external":true,"refSections":[{"refs":[{"id":"ref-for-xrframe-active"}],"title":"3.1. XRView"},{"refs":[{"id":"ref-for-xrframe-active\u2460"}],"title":"3.3. XRWebGLBinding"}],"url":"https://www.w3.org/TR/webxr/#xrframe-active"},
+"a1afb5ed": {"dfnID":"a1afb5ed","dfnText":"time","external":true,"refSections":[{"refs":[{"id":"ref-for-xrframe-time"}],"title":"3.1. XRView"}],"url":"https://www.w3.org/TR/webxr/#xrframe-time"},
+"a5c91173": {"dfnID":"a5c91173","dfnText":"SameObject","external":true,"refSections":[{"refs":[{"id":"ref-for-SameObject"}],"title":"3.1. XRView"}],"url":"https://webidl.spec.whatwg.org/#SameObject"},
+"ae8def21": {"dfnID":"ae8def21","dfnText":"contain","external":true,"refSections":[{"refs":[{"id":"ref-for-list-contain"}],"title":"3.1. XRView"},{"refs":[{"id":"ref-for-list-contain\u2460"}],"title":"5.2. Privacy indicators"}],"url":"https://infra.spec.whatwg.org/#list-contain"},
+"aligned": {"dfnID":"aligned","dfnText":"aligned","external":false,"refSections":[{"refs":[{"id":"ref-for-aligned"}],"title":"3.1. XRView"},{"refs":[{"id":"ref-for-aligned\u2460"}],"title":"4.1. Native camera"},{"refs":[{"id":"ref-for-aligned\u2461"}],"title":"5. Privacy & Security Considerations"}],"url":"#aligned"},
+"b075ce09": {"dfnID":"b075ce09","dfnText":"XRView","external":true,"refSections":[{"refs":[{"id":"ref-for-xrview-interface"},{"id":"ref-for-xrview-interface\u2460"},{"id":"ref-for-xrview-interface\u2461"},{"id":"ref-for-xrview-interface\u2462"},{"id":"ref-for-xrview-interface\u2463"}],"title":"3.1. XRView"},{"refs":[{"id":"ref-for-xrview-interface\u2464"},{"id":"ref-for-xrview-interface\u2465"}],"title":"3.2. XRCamera"},{"refs":[{"id":"ref-for-xrview-interface\u2466"},{"id":"ref-for-xrview-interface\u2467"},{"id":"ref-for-xrview-interface\u2468"},{"id":"ref-for-xrview-interface\u2460\u24ea"},{"id":"ref-for-xrview-interface\u2460\u2460"}],"title":"4.1. Native camera"},{"refs":[{"id":"ref-for-xrview-interface\u2460\u2461"}],"title":"5. Privacy & Security Considerations"}],"url":"https://www.w3.org/TR/webxr/#xrview-interface"},
+"b12ee965": {"dfnID":"b12ee965","dfnText":"frame","external":true,"refSections":[{"refs":[{"id":"ref-for-xrview-frame"}],"title":"3.1. XRView"},{"refs":[{"id":"ref-for-xrview-frame\u2460"}],"title":"3.3. XRWebGLBinding"}],"url":"https://www.w3.org/TR/webxr/#xrview-frame"},
+"b44fc51d": {"dfnID":"b44fc51d","dfnText":"camera","external":true,"refSections":[{"refs":[{"id":"ref-for-dfn-camera"}],"title":"5.1. User experience"}],"url":"https://www.w3.org/TR/mediacapture-streams/#dfn-camera"},
+"b4cfa5ce": {"dfnID":"b4cfa5ce","dfnText":"throw","external":true,"refSections":[{"refs":[{"id":"ref-for-dfn-throw"},{"id":"ref-for-dfn-throw\u2460"}],"title":"3.1. XRView"},{"refs":[{"id":"ref-for-dfn-throw\u2461"},{"id":"ref-for-dfn-throw\u2462"},{"id":"ref-for-dfn-throw\u2463"}],"title":"3.3. XRWebGLBinding"}],"url":"https://webidl.spec.whatwg.org/#dfn-throw"},
+"b75bb3bd": {"dfnID":"b75bb3bd","dfnText":"SecureContext","external":true,"refSections":[{"refs":[{"id":"ref-for-SecureContext"}],"title":"3.2. XRCamera"}],"url":"https://webidl.spec.whatwg.org/#SecureContext"},
+"c9b54a49": {"dfnID":"c9b54a49","dfnText":"session","external":true,"refSections":[{"refs":[{"id":"ref-for-xrwebglbinding-session"}],"title":"3.3. XRWebGLBinding"}],"url":"https://immersive-web.github.io/layers/#xrwebglbinding-session"},
+"camera-access": {"dfnID":"camera-access","dfnText":"camera-access","external":false,"refSections":[{"refs":[{"id":"ref-for-camera-access"}],"title":"3.1. XRView"},{"refs":[{"id":"ref-for-camera-access\u2460"},{"id":"ref-for-camera-access\u2461"}],"title":"5. Privacy & Security Considerations"},{"refs":[{"id":"ref-for-camera-access\u2462"},{"id":"ref-for-camera-access\u2463"}],"title":"5.1. User experience"},{"refs":[{"id":"ref-for-camera-access\u2464"},{"id":"ref-for-camera-access\u2465"}],"title":"5.2. Privacy indicators"}],"url":"#camera-access"},
+"cbf14c82": {"dfnID":"cbf14c82","dfnText":"XRFrame","external":true,"refSections":[{"refs":[{"id":"ref-for-xrframe-interface"}],"title":"3.3. XRWebGLBinding"}],"url":"https://www.w3.org/TR/webxr/#xrframe-interface"},
+"cf7decf1": {"dfnID":"cf7decf1","dfnText":"opaque texture","external":true,"refSections":[{"refs":[{"id":"ref-for-opaque-texture"},{"id":"ref-for-opaque-texture\u2460"},{"id":"ref-for-opaque-texture\u2461"}],"title":"3.3. XRWebGLBinding"}],"url":"https://immersive-web.github.io/layers/#opaque-texture"},
+"create-camera-instance": {"dfnID":"create-camera-instance","dfnText":" create camera instance","external":false,"refSections":[{"refs":[{"id":"ref-for-create-camera-instance"}],"title":"3.1. XRView"}],"url":"#create-camera-instance"},
+"d0d9db47": {"dfnID":"d0d9db47","dfnText":"XR Compositor","external":true,"refSections":[{"refs":[{"id":"ref-for-xr-compositor"}],"title":"5. Privacy & Security Considerations"}],"url":"https://www.w3.org/TR/webxr/#xr-compositor"},
+"dc9c48d6": {"dfnID":"dc9c48d6","dfnText":"requestSession(mode)","external":true,"refSections":[{"refs":[{"id":"ref-for-dom-xrsystem-requestsession"}],"title":"5.1. User experience"}],"url":"https://immersive-web.github.io/webxr/#dom-xrsystem-requestsession"},
+"dom-xrcamera-height": {"dfnID":"dom-xrcamera-height","dfnText":"height","external":false,"refSections":[{"refs":[{"id":"ref-for-dom-xrcamera-height"},{"id":"ref-for-dom-xrcamera-height\u2460"}],"title":"3.2. XRCamera"}],"url":"#dom-xrcamera-height"},
+"dom-xrcamera-width": {"dfnID":"dom-xrcamera-width","dfnText":"width","external":false,"refSections":[{"refs":[{"id":"ref-for-dom-xrcamera-width"},{"id":"ref-for-dom-xrcamera-width\u2460"}],"title":"3.2. XRCamera"}],"url":"#dom-xrcamera-width"},
+"dom-xrview-camera": {"dfnID":"dom-xrview-camera","dfnText":"camera","external":false,"refSections":[{"refs":[{"id":"ref-for-dom-xrview-camera"},{"id":"ref-for-dom-xrview-camera\u2460"}],"title":"3.1. XRView"}],"url":"#dom-xrview-camera"},
+"dom-xrwebglbinding-getcameraimage": {"dfnID":"dom-xrwebglbinding-getcameraimage","dfnText":"getCameraImage","external":false,"refSections":[{"refs":[{"id":"ref-for-dom-xrwebglbinding-getcameraimage"},{"id":"ref-for-dom-xrwebglbinding-getcameraimage\u2460"},{"id":"ref-for-dom-xrwebglbinding-getcameraimage\u2461"}],"title":"3.3. XRWebGLBinding"}],"url":"#dom-xrwebglbinding-getcameraimage"},
+"dom-xrwebglbinding-getcameraimage-camera-camera": {"dfnID":"dom-xrwebglbinding-getcameraimage-camera-camera","dfnText":"camera","external":false,"refSections":[],"url":"#dom-xrwebglbinding-getcameraimage-camera-camera"},
+"e76130a4": {"dfnID":"e76130a4","dfnText":"inline XR device","external":true,"refSections":[{"refs":[{"id":"ref-for-inline-xr-device"}],"title":"2.1. Feature descriptor"}],"url":"https://www.w3.org/TR/webxr/#inline-xr-device"},
+"e97a9688": {"dfnID":"e97a9688","dfnText":"unsigned long","external":true,"refSections":[{"refs":[{"id":"ref-for-idl-unsigned-long"},{"id":"ref-for-idl-unsigned-long\u2460"}],"title":"3.2. XRCamera"}],"url":"https://webidl.spec.whatwg.org/#idl-unsigned-long"},
+"native-camera": {"dfnID":"native-camera","dfnText":"native camera","external":false,"refSections":[{"refs":[{"id":"ref-for-native-camera"}],"title":"2.1. Feature descriptor"},{"refs":[{"id":"ref-for-native-camera\u2460"}],"title":"3.1. XRView"},{"refs":[{"id":"ref-for-native-camera\u2461"}],"title":"4.1. Native camera"}],"url":"#native-camera"},
+"obtain-camera": {"dfnID":"obtain-camera","dfnText":"obtain camera","external":false,"refSections":[{"refs":[{"id":"ref-for-obtain-camera"}],"title":"3.1. XRView"}],"url":"#obtain-camera"},
+"obtain-camera-image": {"dfnID":"obtain-camera-image","dfnText":"obtain camera image","external":false,"refSections":[{"refs":[{"id":"ref-for-obtain-camera-image"},{"id":"ref-for-obtain-camera-image\u2460"}],"title":"3.3. XRWebGLBinding"}],"url":"#obtain-camera-image"},
+"xrcamera": {"dfnID":"xrcamera","dfnText":"XRCamera","external":false,"refSections":[{"refs":[{"id":"ref-for-xrcamera"},{"id":"ref-for-xrcamera\u2460"},{"id":"ref-for-xrcamera\u2461"}],"title":"3.1. XRView"},{"refs":[{"id":"ref-for-xrcamera\u2462"},{"id":"ref-for-xrcamera\u2463"},{"id":"ref-for-xrcamera\u2464"},{"id":"ref-for-xrcamera\u2465"},{"id":"ref-for-xrcamera\u2466"},{"id":"ref-for-xrcamera\u2467"},{"id":"ref-for-xrcamera\u2468"}],"title":"3.2. XRCamera"},{"refs":[{"id":"ref-for-xrcamera\u2460\u24ea"},{"id":"ref-for-xrcamera\u2460\u2460"},{"id":"ref-for-xrcamera\u2460\u2461"}],"title":"3.3. XRWebGLBinding"}],"url":"#xrcamera"},
+"xrcamera-camera-image": {"dfnID":"xrcamera-camera-image","dfnText":"camera image","external":false,"refSections":[{"refs":[{"id":"ref-for-xrcamera-camera-image"},{"id":"ref-for-xrcamera-camera-image\u2460"},{"id":"ref-for-xrcamera-camera-image\u2461"}],"title":"3.2. XRCamera"},{"refs":[{"id":"ref-for-xrcamera-camera-image\u2462"}],"title":"3.3. XRWebGLBinding"}],"url":"#xrcamera-camera-image"},
+"xrcamera-view": {"dfnID":"xrcamera-view","dfnText":"view","external":false,"refSections":[{"refs":[{"id":"ref-for-xrcamera-view"}],"title":"3.2. XRCamera"},{"refs":[{"id":"ref-for-xrcamera-view\u2460"}],"title":"3.3. XRWebGLBinding"}],"url":"#xrcamera-view"},
+};
+
+document.addEventListener("DOMContentLoaded", ()=>{
+    genAllDfnPanels();
+
+    document.body.addEventListener("click", (e) => {
+        // If not handled already, just hide all dfn panels.
+        hideAllDfnPanels();
+    });
+});
+
+window.addEventListener("resize", () => {
+    // Pin any visible dfn panel
+    queryAll(".dfn-panel.on, .dfn-panel.activated").forEach(el=>positionDfnPanel(el));
+});
+
+function genAllDfnPanels() {
+    for(const panelData of Object.values(dfnPanelData)) {
+        const dfnID = panelData.dfnID;
+        const dfn = document.getElementById(dfnID);
+        if(!dfn) {
+            console.log(`Can't find dfn#${dfnID}.`, panelData);
+            continue;
+        }
+        dfn.panelData = panelData;
+        insertDfnPopupAction(dfn);
+    }
+}
+
+function genDfnPanel(dfn, { dfnID, url, dfnText, refSections, external }) {
+    const dfnPanel = mk.aside({
+        class: "dfn-panel on",
+        id: `infopanel-for-${dfnID}`,
+        "data-for": dfnID,
+        "aria-labelled-by":`infopaneltitle-for-${dfnID}`,
+        },
+        mk.span({id:`infopaneltitle-for-${dfnID}`, style:"display:none"},
+            `Info about the '${dfnText}' ${external?"external":""} reference.`),
+        mk.a({href:url, class:"dfn-link"}, url),
+        refSections.length == 0 ? [] :
+            mk.b({}, "Referenced in:"),
+            mk.ul({},
+                ...refSections.map(section=>
+                    mk.li({},
+                        ...section.refs.map((ref, refI)=>
+                            [
+                                mk.a({ href: `#${ref.id}` },
+                                    (refI == 0) ? section.title : `(${refI + 1})`
+                                ),
+                                " ",
+                            ]
+                        ),
+                    ),
+                ),
+            ),
+        genLinkingSyntaxes(dfn),
+    );
+
+    dfnPanel.addEventListener('click', (event) => {
+        if (event.target.nodeName == 'A') {
+            scrollToTargetAndHighlight(event);
+            pinDfnPanel(dfnPanel);
+        }
+        event.stopPropagation();
+        refocusOnTarget(event);
+    });
+    dfnPanel.addEventListener('keydown', (event) => {
+        if(event.keyCode == 27) { // Escape key
+            hideDfnPanel({dfnPanel});
+            event.stopPropagation();
+            event.preventDefault();
         }
     });
-    {
-        const indexCounts = new Map();
-        const indexNames = new Map();
-        function highlightSameAlgoVars(v) {
-            // Find the algorithm container.
-            let algoContainer = null;
-            let searchEl = v;
-            while(algoContainer == null && searchEl != document.body) {
-                searchEl = searchEl.parentNode;
-                if(searchEl.hasAttribute("data-algorithm")) {
-                    algoContainer = searchEl;
-                }
-            }
 
-            // Not highlighting document-global vars,
-            // too likely to be unrelated.
-            if(algoContainer == null) return;
+    dfnPanel.dfn = dfn;
+    dfn.dfnPanel = dfnPanel;
+    return dfnPanel;
+}
 
-            const algoName = algoContainer.getAttribute("data-algorithm");
-            const varName = getVarName(v);
-            const addClass = !v.classList.contains("selected");
-            let highlightClass = null;
-            if(addClass) {
-                const index = chooseHighlightIndex(algoName, varName);
-                indexCounts.get(algoName)[index] += 1;
-                indexNames.set(algoName+"///"+varName, index);
-                highlightClass = nameFromIndex(index);
-            } else {
-                const index = previousHighlightIndex(algoName, varName);
-                indexCounts.get(algoName)[index] -= 1;
-                highlightClass = nameFromIndex(index);
-            }
 
-            // Find all same-name vars, and toggle their class appropriately.
-            for(const el of algoContainer.querySelectorAll("var")) {
-                if(getVarName(el) == varName) {
-                    el.classList.toggle("selected", addClass);
-                    el.classList.toggle(highlightClass, addClass);
-                }
-            }
+
+function hideAllDfnPanels() {
+    // Delete the currently-active dfn panel.
+    queryAll(".dfn-panel").forEach(dfnPanel=>hideDfnPanel({dfnPanel}));
+}
+
+function showDfnPanel(dfn) {
+    hideAllDfnPanels(); // Only display one at a time.
+
+    dfn.setAttribute("aria-expanded", "true");
+
+    const dfnPanel = genDfnPanel(dfn, dfn.panelData);
+
+    // Give the dfn a unique tabindex, and then
+    // give all the tabbable panel bits successive indexes.
+    let tabIndex = 100;
+    dfn.tabIndex = tabIndex++;
+    const tabbable = dfnPanel.querySelectorAll(":is(a, button)");
+    for (const el of tabbable) {
+        el.tabIndex = tabIndex++;
+    }
+
+    append(document.body, dfnPanel);
+    positionDfnPanel(dfnPanel);
+}
+
+function positionDfnPanel(dfnPanel) {
+    const dfn = dfnPanel.dfn;
+    const dfnPos = getBounds(dfn);
+    dfnPanel.style.top = dfnPos.bottom + "px";
+    dfnPanel.style.left = dfnPos.left + "px";
+
+    const panelPos = dfnPanel.getBoundingClientRect();
+    const panelMargin = 8;
+    const maxRight = document.body.parentNode.clientWidth - panelMargin;
+    if (panelPos.right > maxRight) {
+        const overflowAmount = panelPos.right - maxRight;
+        const newLeft = Math.max(panelMargin, dfnPos.left - overflowAmount);
+        dfnPanel.style.left = newLeft + "px";
+    }
+}
+
+function pinDfnPanel(dfnPanel) {
+    // Switch it to "activated" state, which pins it.
+    dfnPanel.classList.add("activated");
+    dfnPanel.style.position = "fixed";
+    dfnPanel.style.left = null;
+    dfnPanel.style.top = null;
+}
+
+function hideDfnPanel({dfn, dfnPanel}) {
+    if(!dfnPanel) dfnPanel = dfn.dfnPanel;
+    if(!dfn) dfn = dfnPanel.dfn;
+    dfn.dfnPanel = undefined;
+    dfnPanel.dfn = undefined;
+    dfn.setAttribute("aria-expanded", "false");
+    dfn.tabIndex = undefined;
+    dfnPanel.remove()
+}
+
+function toggleDfnPanel(dfn) {
+    if(dfn.dfnPanel) {
+        hideDfnPanel(dfn);
+    } else {
+        showDfnPanel(dfn);
+    }
+}
+
+function insertDfnPopupAction(dfn) {
+    dfn.setAttribute('role', 'button');
+    dfn.setAttribute('aria-expanded', 'false')
+    dfn.tabIndex = 0;
+    dfn.classList.add('has-dfn-panel');
+    dfn.addEventListener('click', (event) => {
+        toggleDfnPanel(dfn);
+        event.stopPropagation();
+    });
+    dfn.addEventListener('keypress', (event) => {
+        const kc = event.keyCode;
+        // 32->Space, 13->Enter
+        if(kc == 32 || kc == 13) {
+            toggleDfnPanel(dfn);
+            event.stopPropagation();
+            event.preventDefault();
         }
-        function getVarName(el) {
-            return el.textContent.replace(/(\s|\xa0)+/, " ").trim();
-        }
-        function chooseHighlightIndex(algoName, varName) {
-            let indexes = null;
-            if(indexCounts.has(algoName)) {
-                indexes = indexCounts.get(algoName);
-            } else {
-                // 7 classes right now
-                indexes = [0,0,0,0,0,0,0];
-                indexCounts.set(algoName, indexes);
-            }
+    });
+}
 
-            // If the element was recently unclicked,
-            // *and* that color is still unclaimed,
-            // give it back the same color.
-            const lastIndex = previousHighlightIndex(algoName, varName);
-            if(indexes[lastIndex] === 0) return lastIndex;
+function refocusOnTarget(event) {
+    const target = event.target;
+    setTimeout(() => {
+        // Refocus on the event.target element.
+        // This is needed after browser scrolls to the destination.
+        target.focus();
+    });
+}
 
-            // Find the earliest index with the lowest count.
-            const minCount = Math.min.apply(null, indexes);
-            let index = null;
-            for(var i = 0; i < indexes.length; i++) {
-                if(indexes[i] == minCount) {
-                    return i;
-                }
-            }
-        }
-        function previousHighlightIndex(algoName, varName) {
-            return indexNames.get(algoName+"///"+varName);
-        }
-        function nameFromIndex(index) {
-            return "selected" + index;
+// TODO: shared util
+// Returns the root-level absolute position {left and top} of element.
+function getBounds(el, relativeTo=document.body) {
+    const relativeRect = relativeTo.getBoundingClientRect();
+    const elRect = el.getBoundingClientRect();
+    const top = elRect.top - relativeRect.top;
+    const left = elRect.left - relativeRect.left;
+    return {
+        top,
+        left,
+        bottom: top + elRect.height,
+        right: left + elRect.width,
+    }
+}
+
+function scrollToTargetAndHighlight(event) {
+    let hash = event.target.hash;
+    if (hash) {
+        hash = decodeURIComponent(hash.substring(1));
+        const dest = document.getElementById(hash);
+        if (dest) {
+            dest.classList.add('highlighted');
+            setTimeout(() => dest.classList.remove('highlighted'), 1000);
         }
     }
-    </script>
+}
+
+// Functions, divided by link type, that wrap an autolink's
+// contents with the appropriate outer syntax.
+// Alternately, a string naming another type they format
+// the same as.
+function needsFor(type) {
+    switch(type) {
+        case "descriptor":
+        case "value":
+        case "element-attr":
+        case "attr-value":
+        case "element-state":
+        case "method":
+        case "constructor":
+        case "argument":
+        case "attribute":
+        case "const":
+        case "dict-member":
+        case "event":
+        case "enum-value":
+        case "stringifier":
+        case "serializer":
+        case "iterator":
+        case "maplike":
+        case "setlike":
+        case "state":
+        case "mode":
+        case "context":
+        case "facet": return true;
+
+        default: return false;
+    }
+}
+function refusesFor(type) {
+    switch(type) {
+        case "property":
+        case "element":
+        case "interface":
+        case "namespace":
+        case "callback":
+        case "dictionary":
+        case "enum":
+        case "exception":
+        case "typedef":
+        case "http-header":
+        case "permission": return true;
+
+        default: return false;
+    }
+}
+function linkFormatterFromType(type) {
+    switch(type) {
+        case 'scheme':
+        case 'permission':
+        case 'dfn': return (text) => `[=${text}=]`;
+
+        case 'abstract-op': return (text) => `[\$${text}\$]`;
+
+        case 'function':
+        case 'at-rule':
+        case 'selector':
+        case 'value': return (text) => `''${text}''`;
+
+        case 'http-header': return (text) => `[:${text}:]`;
+
+        case 'interface':
+        case 'constructor':
+        case 'method':
+        case 'argument':
+        case 'attribute':
+        case 'callback':
+        case 'dictionary':
+        case 'dict-member':
+        case 'enum':
+        case 'enum-value':
+        case 'exception':
+        case 'const':
+        case 'typedef':
+        case 'stringifier':
+        case 'serializer':
+        case 'iterator':
+        case 'maplike':
+        case 'setlike':
+        case 'extended-attribute':
+        case 'event':
+        case 'idl': return (text) => `{{${text}}}`;
+
+        case 'element-state':
+        case 'element-attr':
+        case 'attr-value':
+        case 'element': return (element) => `<{${element}}>`;
+
+        case 'grammar': return (text) => `${text} (within a <pre class=prod>)`;
+
+        case 'type': return (text)=> `<<${text}>>`;
+
+        case 'descriptor':
+        case 'property': return (text) => `'${text}'`;
+
+        default: return;
+    };
+};
+
+function genLinkingSyntaxes(dfn) {
+    if(dfn.tagName != "DFN") return;
+
+    const type = dfn.getAttribute('data-dfn-type');
+    if(!type) {
+        console.log(`<dfn> doesn't have a data-dfn-type:`, dfn);
+        return [];
+    }
+
+    // Return a function that wraps link text based on the type
+    const linkFormatter = linkFormatterFromType(type);
+    if(!linkFormatter) {
+        console.log(`<dfn> has an unknown data-dfn-type:`, dfn);
+        return [];
+    }
+
+    let ltAlts;
+    if(dfn.hasAttribute('data-lt')) {
+        ltAlts = dfn.getAttribute('data-lt')
+            .split("|")
+            .map(x=>x.trim());
+    } else {
+        ltAlts = [dfn.textContent.trim()];
+    }
+    if(type == "type") {
+        // lt of "<foo>", but "foo" is the interior;
+        // <<foo/bar>> is how you write it with a for,
+        // not <foo/<bar>> or whatever.
+        for(var i = 0; i < ltAlts.length; i++) {
+            const lt = ltAlts[i];
+            const match = /<(.*)>/.exec(lt);
+            if(match) { ltAlts[i] = match[1]; }
+        }
+    }
+
+    let forAlts;
+    if(dfn.hasAttribute('data-dfn-for')) {
+        forAlts = dfn.getAttribute('data-dfn-for')
+            .split(",")
+            .map(x=>x.trim());
+    } else {
+        forAlts = [''];
+    }
+
+    let linkingSyntaxes = [];
+    if(!needsFor(type)) {
+        for(const lt of ltAlts) {
+            linkingSyntaxes.push(linkFormatter(lt));
+        }
+    }
+    if(!refusesFor(type)) {
+        for(const f of forAlts) {
+            linkingSyntaxes.push(linkFormatter(`${f}/${ltAlts[0]}`))
+        }
+    }
+    return [
+        mk.b({}, 'Possible linking syntaxes:'),
+        mk.ul({},
+            ...linkingSyntaxes.map(link => {
+                const copyLink = async () =>
+                    await navigator.clipboard.writeText(link);
+                return mk.li({},
+                    mk.div({ class: 'link-item' },
+                        mk.button({
+                            class: 'copy-icon', title: 'Copy',
+                            type: 'button',
+                            _onclick: copyLink,
+                            tabindex: 0,
+                        }, mk.span({ class: 'icon' }) ),
+                        mk.span({}, link)
+                    )
+                );
+            })
+        )
+    ];
+}
+}
+</script>
+<script>/* Boilerplate: script-ref-hints */
+"use strict";
+{
+let refsData = {
+"#aligned": {"displayText":"aligned","export":true,"for_":[],"level":"1","normative":true,"shortname":"webxr-raw-camera-access","spec":"webxr-raw-camera-access-1","status":"local","text":"aligned","type":"dfn","url":"#aligned"},
+"#camera-access": {"displayText":"camera-access","export":true,"for_":[],"level":"1","normative":true,"shortname":"webxr-raw-camera-access","spec":"webxr-raw-camera-access-1","status":"local","text":"camera-access","type":"dfn","url":"#camera-access"},
+"#create-camera-instance": {"displayText":"create camera instance","export":true,"for_":[],"level":"1","normative":true,"shortname":"webxr-raw-camera-access","spec":"webxr-raw-camera-access-1","status":"local","text":"create camera instance","type":"dfn","url":"#create-camera-instance"},
+"#dom-xrcamera-height": {"displayText":"height","export":true,"for_":["XRCamera"],"level":"1","normative":true,"shortname":"webxr-raw-camera-access","spec":"webxr-raw-camera-access-1","status":"local","text":"height","type":"attribute","url":"#dom-xrcamera-height"},
+"#dom-xrcamera-width": {"displayText":"width","export":true,"for_":["XRCamera"],"level":"1","normative":true,"shortname":"webxr-raw-camera-access","spec":"webxr-raw-camera-access-1","status":"local","text":"width","type":"attribute","url":"#dom-xrcamera-width"},
+"#dom-xrview-camera": {"displayText":"camera","export":true,"for_":["XRView"],"level":"1","normative":true,"shortname":"webxr-raw-camera-access","spec":"webxr-raw-camera-access-1","status":"local","text":"camera","type":"attribute","url":"#dom-xrview-camera"},
+"#dom-xrwebglbinding-getcameraimage": {"displayText":"getCameraImage(camera)","export":true,"for_":["XRWebGLBinding"],"level":"1","normative":true,"shortname":"webxr-raw-camera-access","spec":"webxr-raw-camera-access-1","status":"local","text":"getCameraImage(camera)","type":"method","url":"#dom-xrwebglbinding-getcameraimage"},
+"#native-camera": {"displayText":"native camera","export":true,"for_":[],"level":"1","normative":true,"shortname":"webxr-raw-camera-access","spec":"webxr-raw-camera-access-1","status":"local","text":"native camera","type":"dfn","url":"#native-camera"},
+"#obtain-camera": {"displayText":"obtain camera","export":true,"for_":[],"level":"1","normative":true,"shortname":"webxr-raw-camera-access","spec":"webxr-raw-camera-access-1","status":"local","text":"obtain camera","type":"dfn","url":"#obtain-camera"},
+"#obtain-camera-image": {"displayText":"obtain camera image","export":true,"for_":[],"level":"1","normative":true,"shortname":"webxr-raw-camera-access","spec":"webxr-raw-camera-access-1","status":"local","text":"obtain camera image","type":"dfn","url":"#obtain-camera-image"},
+"#xrcamera": {"displayText":"XRCamera","export":true,"for_":[],"level":"1","normative":true,"shortname":"webxr-raw-camera-access","spec":"webxr-raw-camera-access-1","status":"local","text":"XRCamera","type":"interface","url":"#xrcamera"},
+"#xrcamera-camera-image": {"displayText":"camera image","export":true,"for_":["XRCamera"],"level":"1","normative":true,"shortname":"webxr-raw-camera-access","spec":"webxr-raw-camera-access-1","status":"local","text":"camera image","type":"dfn","url":"#xrcamera-camera-image"},
+"#xrcamera-view": {"displayText":"view","export":true,"for_":["XRCamera"],"level":"1","normative":true,"shortname":"webxr-raw-camera-access","spec":"webxr-raw-camera-access-1","status":"local","text":"view","type":"dfn","url":"#xrcamera-view"},
+"https://immersive-web.github.io/layers/#XRWebGLBindingtype": {"displayText":"XRWebGLBinding","export":true,"for_":[],"level":"","normative":true,"shortname":"webxr layers","spec":"webxr layers","status":"anchor-block","text":"XRWebGLBinding","type":"interface","url":"https://immersive-web.github.io/layers/#XRWebGLBindingtype"},
+"https://immersive-web.github.io/layers/#opaque-texture": {"displayText":"opaque texture","export":true,"for_":[],"level":"","normative":true,"shortname":"webxr layers","spec":"webxr layers","status":"anchor-block","text":"opaque texture","type":"dfn","url":"https://immersive-web.github.io/layers/#opaque-texture"},
+"https://immersive-web.github.io/layers/#xrwebglbinding-context": {"displayText":"context","export":true,"for_":["XRWebGLBinding"],"level":"","normative":true,"shortname":"webxr layers","spec":"webxr layers","status":"anchor-block","text":"context","type":"dfn","url":"https://immersive-web.github.io/layers/#xrwebglbinding-context"},
+"https://immersive-web.github.io/layers/#xrwebglbinding-session": {"displayText":"session","export":true,"for_":["XRWebGLBinding"],"level":"","normative":true,"shortname":"webxr layers","spec":"webxr layers","status":"anchor-block","text":"session","type":"dfn","url":"https://immersive-web.github.io/layers/#xrwebglbinding-session"},
+"https://immersive-web.github.io/webxr-ar-module/#blend-technique": {"displayText":"blend technique","export":true,"for_":[],"level":"","normative":true,"shortname":"webxr augmented reality module","spec":"webxr augmented reality module","status":"anchor-block","text":"blend technique","type":"dfn","url":"https://immersive-web.github.io/webxr-ar-module/#blend-technique"},
+"https://immersive-web.github.io/webxr/#dom-xrsystem-requestsession": {"displayText":"requestSession(mode)","export":true,"for_":["XRSystem"],"level":"1","normative":true,"shortname":"webxr","spec":"webxr","status":"current","text":"requestSession(mode)","type":"method","url":"https://immersive-web.github.io/webxr/#dom-xrsystem-requestsession"},
+"https://infra.spec.whatwg.org/#list-contain": {"displayText":"contain","export":true,"for_":["list","stack","queue","set"],"level":"1","normative":true,"shortname":"infra","spec":"infra","status":"current","text":"contain","type":"dfn","url":"https://infra.spec.whatwg.org/#list-contain"},
+"https://webidl.spec.whatwg.org/#Exposed": {"displayText":"Exposed","export":true,"for_":[],"level":"1","normative":true,"shortname":"webidl","spec":"webidl","status":"current","text":"Exposed","type":"extended-attribute","url":"https://webidl.spec.whatwg.org/#Exposed"},
+"https://webidl.spec.whatwg.org/#SameObject": {"displayText":"SameObject","export":true,"for_":[],"level":"1","normative":true,"shortname":"webidl","spec":"webidl","status":"current","text":"SameObject","type":"extended-attribute","url":"https://webidl.spec.whatwg.org/#SameObject"},
+"https://webidl.spec.whatwg.org/#SecureContext": {"displayText":"SecureContext","export":true,"for_":[],"level":"1","normative":true,"shortname":"webidl","spec":"webidl","status":"current","text":"SecureContext","type":"extended-attribute","url":"https://webidl.spec.whatwg.org/#SecureContext"},
+"https://webidl.spec.whatwg.org/#dfn-throw": {"displayText":"throw","export":true,"for_":["exception"],"level":"1","normative":true,"shortname":"webidl","spec":"webidl","status":"current","text":"throw","type":"dfn","url":"https://webidl.spec.whatwg.org/#dfn-throw"},
+"https://webidl.spec.whatwg.org/#idl-unsigned-long": {"displayText":"unsigned long","export":true,"for_":[],"level":"1","normative":true,"shortname":"webidl","spec":"webidl","status":"current","text":"unsigned long","type":"interface","url":"https://webidl.spec.whatwg.org/#idl-unsigned-long"},
+"https://webidl.spec.whatwg.org/#invalidstateerror": {"displayText":"InvalidStateError","export":true,"for_":[],"level":"1","normative":true,"shortname":"webidl","spec":"webidl","status":"current","text":"InvalidStateError","type":"exception","url":"https://webidl.spec.whatwg.org/#invalidstateerror"},
+"https://www.khronos.org/registry/webgl/specs/latest/1.0/#5.9": {"displayText":"WebGLTexture","export":true,"for_":[],"level":"","normative":true,"shortname":"webgl","spec":"webgl","status":"anchor-block","text":"WebGLTexture","type":"interface","url":"https://www.khronos.org/registry/webgl/specs/latest/1.0/#5.9"},
+"https://www.w3.org/TR/mediacapture-streams/#dfn-camera": {"displayText":"camera","export":true,"for_":[],"level":"","normative":true,"shortname":"media capture and streams","spec":"media capture and streams","status":"anchor-block","text":"camera","type":"dfn","url":"https://www.w3.org/TR/mediacapture-streams/#dfn-camera"},
+"https://www.w3.org/TR/webxr/#capable-of-supporting": {"displayText":"capable of supporting","export":true,"for_":[],"level":"","normative":true,"shortname":"webxr device api - level 1","spec":"webxr device api - level 1","status":"anchor-block","text":"capable of supporting","type":"dfn","url":"https://www.w3.org/TR/webxr/#capable-of-supporting"},
+"https://www.w3.org/TR/webxr/#feature-descriptor": {"displayText":"feature descriptor","export":true,"for_":[],"level":"","normative":true,"shortname":"webxr device api - level 1","spec":"webxr device api - level 1","status":"anchor-block","text":"feature descriptor","type":"dfn","url":"https://www.w3.org/TR/webxr/#feature-descriptor"},
+"https://www.w3.org/TR/webxr/#inline-xr-device": {"displayText":"inline XR device","export":true,"for_":[],"level":"","normative":true,"shortname":"webxr device api - level 1","spec":"webxr device api - level 1","status":"anchor-block","text":"inline xr device","type":"dfn","url":"https://www.w3.org/TR/webxr/#inline-xr-device"},
+"https://www.w3.org/TR/webxr/#permissions-policy": {"displayText":"permissions policy","export":true,"for_":[],"level":"","normative":true,"shortname":"webxr device api - level 1","spec":"webxr device api - level 1","status":"anchor-block","text":"permissions policy","type":"dfn","url":"https://www.w3.org/TR/webxr/#permissions-policy"},
+"https://www.w3.org/TR/webxr/#requestanimationframe": {"displayText":"requestAnimationFrame()","export":true,"for_":["XRSession"],"level":"","normative":true,"shortname":"webxr device api - level 1","spec":"webxr device api - level 1","status":"anchor-block","text":"requestanimationframe()","type":"dfn","url":"https://www.w3.org/TR/webxr/#requestanimationframe"},
+"https://www.w3.org/TR/webxr/#set-of-granted-features": {"displayText":"set of granted features","export":true,"for_":["XRSession"],"level":"","normative":true,"shortname":"webxr device api - level 1","spec":"webxr device api - level 1","status":"anchor-block","text":"set of granted features","type":"dfn","url":"https://www.w3.org/TR/webxr/#set-of-granted-features"},
+"https://www.w3.org/TR/webxr/#xr-compositor": {"displayText":"XR Compositor","export":true,"for_":[],"level":"","normative":true,"shortname":"webxr device api - level 1","spec":"webxr device api - level 1","status":"anchor-block","text":"xr compositor","type":"dfn","url":"https://www.w3.org/TR/webxr/#xr-compositor"},
+"https://www.w3.org/TR/webxr/#xrframe-active": {"displayText":"active","export":true,"for_":["XRFrame"],"level":"","normative":true,"shortname":"webxr device api - level 1","spec":"webxr device api - level 1","status":"anchor-block","text":"active","type":"dfn","url":"https://www.w3.org/TR/webxr/#xrframe-active"},
+"https://www.w3.org/TR/webxr/#xrframe-animationframe": {"displayText":"animationFrame","export":true,"for_":["XRFrame"],"level":"","normative":true,"shortname":"webxr device api - level 1","spec":"webxr device api - level 1","status":"anchor-block","text":"animationframe","type":"dfn","url":"https://www.w3.org/TR/webxr/#xrframe-animationframe"},
+"https://www.w3.org/TR/webxr/#xrframe-interface": {"displayText":"XRFrame","export":true,"for_":[],"level":"","normative":true,"shortname":"webxr device api - level 1","spec":"webxr device api - level 1","status":"anchor-block","text":"XRFrame","type":"interface","url":"https://www.w3.org/TR/webxr/#xrframe-interface"},
+"https://www.w3.org/TR/webxr/#xrframe-time": {"displayText":"time","export":true,"for_":["XRFrame"],"level":"","normative":true,"shortname":"webxr device api - level 1","spec":"webxr device api - level 1","status":"anchor-block","text":"time","type":"dfn","url":"https://www.w3.org/TR/webxr/#xrframe-time"},
+"https://www.w3.org/TR/webxr/#xrsession-interface": {"displayText":"XRSession","export":true,"for_":[],"level":"","normative":true,"shortname":"webxr device api - level 1","spec":"webxr device api - level 1","status":"anchor-block","text":"XRSession","type":"interface","url":"https://www.w3.org/TR/webxr/#xrsession-interface"},
+"https://www.w3.org/TR/webxr/#xrview-frame": {"displayText":"frame","export":true,"for_":["XRView"],"level":"","normative":true,"shortname":"webxr device api - level 1","spec":"webxr device api - level 1","status":"anchor-block","text":"frame","type":"dfn","url":"https://www.w3.org/TR/webxr/#xrview-frame"},
+"https://www.w3.org/TR/webxr/#xrview-interface": {"displayText":"XRView","export":true,"for_":[],"level":"","normative":true,"shortname":"webxr device api - level 1","spec":"webxr device api - level 1","status":"anchor-block","text":"XRView","type":"interface","url":"https://www.w3.org/TR/webxr/#xrview-interface"},
+"https://www.w3.org/TR/webxr/#xrview-session": {"displayText":"session","export":true,"for_":["XRView"],"level":"","normative":true,"shortname":"webxr device api - level 1","spec":"webxr device api - level 1","status":"anchor-block","text":"session","type":"dfn","url":"https://www.w3.org/TR/webxr/#xrview-session"},
+};
+
+function mkRefHint(link, ref) {
+    const linkText = link.textContent;
+    let dfnTextElements = '';
+    if (ref.displayText.toLowerCase() != linkText.toLowerCase()) {
+        // Give the original term if it's being displayed in a different way.
+        // But allow casing differences, they're insignificant.
+        dfnTextElements =
+            mk.li({},
+                mk.b({}, "Term: "),
+                mk.span({}, ref.displayText)
+            );
+    }
+    const forList = ref.for_;
+    let forListElements;
+    if(forList.length == 0) {
+        forListElements = [];
+    } else if(forList.length == 1) {
+        forListElements = mk.li({},
+            mk.b({}, "For: "),
+            mk.span({}, forList[0]),
+        );
+    } else {
+        forListElements = mk.li({},
+            mk.b({}, "For: "),
+            mk.ul({},
+                ...forList.map(forItem =>
+                    mk.li({},
+                        mk.span({}, forItem)
+                    ),
+                ),
+            ),
+        );
+    }
+    const url = ref.url;
+    const safeUrl = encodeURIComponent(url);
+    const hintPanel = mk.aside({
+        class: "ref-hint",
+        id: `ref-hint-for-${safeUrl}`,
+        "data-for": url,
+        "aria-labelled-by": `ref-hint-for-${safeUrl}`,
+    },
+        mk.ul({},
+            dfnTextElements,
+            mk.li({},
+                mk.b({}, "URL: "),
+                mk.a({ href: url, class: "ref" }, url),
+            ),
+            mk.li({},
+                mk.b({}, "Type: "),
+                mk.span({}, `${ref.type}`),
+            ),
+            mk.li({},
+                mk.b({}, "Spec: "),
+                mk.span({}, `${ref.spec ? ref.spec : ''}`),
+            ),
+            forListElements
+        ),
+    );
+    hintPanel.forLink = link;
+    setupRefHintEventListeners(link, hintPanel);
+    return hintPanel;
+}
+
+function hideAllRefHints() {
+    queryAll(".ref-hint").forEach(el=>hideRefHint(el));
+}
+
+function hideRefHint(refHint) {
+    const link = refHint.forLink;
+    link.setAttribute("aria-expanded", "false");
+    if(refHint.teardownEventListeners) {
+        refHint.teardownEventListeners();
+    }
+    refHint.remove();
+}
+
+function showRefHint(link) {
+    if(link.classList.contains("dfn-link")) return;
+    const url = link.getAttribute("href");
+    const refHintKey = link.getAttribute("data-refhint-key");
+    let key = url;
+    if(refHintKey) {
+        key = refHintKey + "_" + url;
+    }
+    const ref = refsData[key];
+    if(!ref) return;
+
+    hideAllRefHints(); // Only display one at this time.
+
+    const refHint = mkRefHint(link, ref);
+    append(document.body, refHint);
+    link.setAttribute("aria-expanded", "true");
+    positionRefHint(refHint);
+}
+
+function setupRefHintEventListeners(link, refHint) {
+    if (refHint.teardownEventListeners) return;
+    // Add event handlers to hide the refHint after the user moves away
+    // from both the link and refHint, if not hovering either within one second.
+    let timeout = null;
+    const startHidingRefHint = (event) => {
+        if (timeout) {
+            clearTimeout(timeout);
+        }
+        timeout = setTimeout(() => {
+            hideRefHint(refHint);
+        }, 1000);
+    }
+    const resetHidingRefHint = (event) => {
+        if (timeout) clearTimeout(timeout);
+        timeout = null;
+    };
+    link.addEventListener("mouseleave", startHidingRefHint);
+    link.addEventListener("mouseenter", resetHidingRefHint);
+    link.addEventListener("blur", startHidingRefHint);
+    link.addEventListener("focus", resetHidingRefHint);
+    refHint.addEventListener("mouseleave", startHidingRefHint);
+    refHint.addEventListener("mouseenter", resetHidingRefHint);
+    refHint.addEventListener("blur", startHidingRefHint);
+    refHint.addEventListener("focus", resetHidingRefHint);
+
+    refHint.teardownEventListeners = () => {
+        // remove event listeners
+        resetHidingRefHint();
+        link.removeEventListener("mouseleave", startHidingRefHint);
+        link.removeEventListener("mouseenter", resetHidingRefHint);
+        link.removeEventListener("blur", startHidingRefHint);
+        link.removeEventListener("focus", resetHidingRefHint);
+        refHint.removeEventListener("mouseleave", startHidingRefHint);
+        refHint.removeEventListener("mouseenter", resetHidingRefHint);
+        refHint.removeEventListener("blur", startHidingRefHint);
+        refHint.removeEventListener("focus", resetHidingRefHint);
+    };
+}
+
+function positionRefHint(refHint) {
+    const link = refHint.forLink;
+    const linkPos = getBounds(link);
+    refHint.style.top = linkPos.bottom + "px";
+    refHint.style.left = linkPos.left + "px";
+
+    const panelPos = refHint.getBoundingClientRect();
+    const panelMargin = 8;
+    const maxRight = document.body.parentNode.clientWidth - panelMargin;
+    if (panelPos.right > maxRight) {
+        const overflowAmount = panelPos.right - maxRight;
+        const newLeft = Math.max(panelMargin, linkPos.left - overflowAmount);
+        refHint.style.left = newLeft + "px";
+    }
+}
+
+// TODO: shared util
+// Returns the root-level absolute position {left and top} of element.
+function getBounds(el, relativeTo=document.body) {
+    const relativeRect = relativeTo.getBoundingClientRect();
+    const elRect = el.getBoundingClientRect();
+    const top = elRect.top - relativeRect.top;
+    const left = elRect.left - relativeRect.left;
+    return {
+        top,
+        left,
+        bottom: top + elRect.height,
+        right: left + elRect.width,
+    }
+}
+
+function showRefHintListener(e) {
+    // If the target isn't in a link (or is a link),
+    // just ignore it.
+    let link = e.target.closest("a");
+    if(!link) return;
+
+    // If the target is in a ref-hint panel
+    // (aka a link in the already-open one),
+    // also just ignore it.
+    if(link.closest(".ref-hint")) return;
+
+    // Otherwise, show the panel for the link.
+    showRefHint(link);
+}
+
+function hideAllHintsListener(e) {
+    // If the click is inside a ref-hint panel, ignore it.
+    if(e.target.closest(".ref-hint")) return;
+    // Otherwise, close all the current panels.
+    hideAllRefHints();
+}
+
+document.addEventListener("DOMContentLoaded", () => {
+    document.body.addEventListener("mousedown", showRefHintListener);
+    document.body.addEventListener("focus", showRefHintListener);
+
+    document.body.addEventListener("click", hideAllHintsListener);
+});
+
+window.addEventListener("resize", () => {
+    // Hide any open ref hint.
+    hideAllRefHints();
+});
+}
+</script>
+<script>/* Boilerplate: script-var-click-highlighting */
+"use strict";
+{
+/*
+Color-choosing design:
+
+* Colors are ordered by goodness.
+* On clicking a var, give it the earliest color
+    with the lowest usage in the algorithm.
+* On re-clicking, re-use the var's most recent color
+    if that's not currently being used elsewhere.
+*/
+
+const COLOR_COUNT = 7;
+
+document.addEventListener("click", e=>{
+    if(e.target.nodeName == "VAR") {
+        highlightSameAlgoVars(e.target);
+    }
+});
+
+function highlightSameAlgoVars(v) {
+    // Find the algorithm container.
+    let algoContainer = findAlgoContainer(v);
+
+    // Not highlighting document-global vars,
+    // too likely to be unrelated.
+    if(algoContainer == null) return;
+
+    const varName = nameFromVar(v);
+    if(!v.hasAttribute("data-var-color")) {
+        const newColor = chooseHighlightColor(algoContainer, v);
+        for(const el of algoContainer.querySelectorAll("var")) {
+            if(nameFromVar(el) == varName) {
+                el.setAttribute("data-var-color", newColor);
+                el.setAttribute("data-var-last-color", newColor);
+            }
+        }
+    } else {
+        for(const el of algoContainer.querySelectorAll("var")) {
+            if(nameFromVar(el) == varName) {
+                el.removeAttribute("data-var-color");
+            }
+        }
+    }
+}
+function findAlgoContainer(el) {
+    while(el != document.body) {
+        if(el.hasAttribute("data-algorithm")) return el;
+        el = el.parentNode;
+    }
+    return null;
+}
+function nameFromVar(el) {
+    return el.textContent.replace(/(\s|\xa0)+/g, " ").trim();
+}
+function colorCountsFromContainer(container) {
+    const namesFromColor = Array.from({length:COLOR_COUNT}, x=>new Set());
+    for(let v of container.querySelectorAll("var[data-var-color]")) {
+        let color = +v.getAttribute("data-var-color");
+        namesFromColor[color].add(nameFromVar(v));
+    }
+
+    return namesFromColor.map(x=>x.size);
+}
+function leastUsedColor(colors) {
+    // Find the earliest color with the lowest count.
+    let minCount = Infinity;
+    let minColor = null;
+    for(var i = 0; i < colors.length; i++) {
+        if(colors[i] < minCount) {
+            minColor = i;
+            minCount = colors[i];
+        }
+    }
+    return minColor;
+}
+function chooseHighlightColor(container, v) {
+    const colorCounts = colorCountsFromContainer(container);
+    if(v.hasAttribute("data-var-last-color")) {
+        let color = +v.getAttribute("data-var-last-color");
+        if(colorCounts[color] == 0) return color;
+    }
+    return leastUsedColor(colorCounts);
+}
+}
+</script>
